@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'alongapp',
+    'commentapp',
 ]
 
 MIDDLEWARE = [
@@ -112,13 +114,34 @@ USE_I18N = True
 
 USE_TZ = True
 
-
+#웹 내부 데이터는 두가지로 분류된다.
+#하나는 static.
+#이는 웹 내부에 이미 저장되어있는 데이터를 말한다.
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+#STAICFILES_DIR은 static파일들의 경로이다.
+STATICFILES_DIRS =[
+    BASE_DIR / "static",
+    #아랫줄로 인해, 프로젝트최상위/static말고도 특정앱/static에도 가져올수있게됨.
+    #os.path.join(BASE_DIR, "alongapp", "static"),
+    #os.path.join(BASE_DIR, "commentapp", "static"),
+]
 
+#STATIC_URL은 static파일들을 제공할 URL이다.
 STATIC_URL = 'static/'
+
+#STATIC_ROOT는 static파일들을 복사하여 모아 놓을 경로이다.
+#이게 필요한 이유는, DEBUG가 True일땐 runserver커맨드만으로도 브라우저에서 자동으로 static파일들을 모아놔주지만
+#배포를 할땐 DEBUG를 반드시 False로 해야한다. 그래서 배포전 static파일들을 한데 모아놔야한다. 그 모으는 장소가 STATIC_ROOT이다.
+#터미널에 "python manage.py collectstatic"으로 모아놓을수 있다.
+#윗줄의 커맨드의 결과론 항상 staticfiles란 폴더가 생기고 거기에 모아지니 STATIC_ROOT를 아래와같이 설정해야한다.
+STATIC_ROOT = os.path.join("staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+MEDIA_URL = "/media/"

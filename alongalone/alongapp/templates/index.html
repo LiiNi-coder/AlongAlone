@@ -1,0 +1,289 @@
+<!--{%load static%}은 static파일인 js나 css를 static폴더에서 가져오겠다는 뜻-->
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>같이 만큼 같이 있는 혼자, Along alone</title>
+    <!-- attention!! -->
+     <!--
+         1. html 관련
+         : 대문자로 만들면 링크 딸 때 인식 못함
+         : index.html 이름은 건드리지 말기 
+         : 공통적으로 적용되는 것들 font, bootstrap, favicon, 그리고 icon 적용해주는 fontawesome script link (얘는 body tag 바로 위에 있음)
+
+         각 html이 뭘의미하는지 궁금하다면 npm 사용하거나 live server 깔아서 확인해보면 알 것임!
+
+         2. css 관련 
+         : 공통적으로 적용되는 요소들 = components (header, bar )
+         : reset.css -> 브라우저가 자동 적용하는 것들 없애는 파일
+         : variables.css -> 공통으로 쓰고 싶은 것들 만들어 뒀음 (색깔 같은 것) 
+            ex. color: var(--mint); 
+            이런 식으로 사용 하면 됨
+         : 추가적으로 css 파일 만드려면 꼭 style.css 상단에 @import 하기 바람. (안그럼 미적용됨)
+         : 색은 내멋대로 냅뒀으니 조화롭게 바꿔주세염 (구글에 color palette 참고)
+
+         3. js 는 아직 딱히 멀 해야될지 몰라서 없음
+          좀 더 공부해서 채워두겠슴....
+
+         4. img는 되도록 png로 저장해주면 좋겠음. 그리고 이름 알기 쉽게 바꿔서 저장해주기! 
+        
+       -->
+
+    
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+SA+Beginner&family=Edu+VIC+WA+NT+Beginner&family=Jua&display=swap" rel="stylesheet">
+    
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{%static "img/favicon.png"%}">
+    <link rel="stylesheet" href="{%static "css/style.css"%}">
+</head>
+<body>
+
+    <!-- header -->
+    <header> 
+
+        <div class="header-col">
+            <img class="header-logo" src="{%static "img/logo.png"%}">
+             <h1>Along alone</h1>
+            </div>
+
+        <div class="header-col"> 
+            <a href="./index.html">홈</a>
+            <a href="./filter.html">맞춤추천</a>
+            <a href="./index.html">지도</a>
+            <a href="./preparing.html">마이페이지</a>
+            <a href="./login.html">로그인</a>
+
+            <span class="header-col-bar">
+            <div class="header-bar"></div>
+            <input class= "header-bar-search"type="text">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            </span>
+        </div>
+       
+    </header>
+
+
+    <!-- 혼놀 level test -->
+    <main>
+    <div class="honnoltest-wrap">
+        <div class="honnol-test" id="left"> 
+            <div>혼자 놀기 레벨 테스트</div>
+            <a href="./preparing.html"><input type="button" value="시작하기"></input>
+            </a>
+        </div>
+        
+        <div class="honnol-test" id="right"> 
+            <img src="" alt="혼놀테스트 이미지">
+        </div>
+    </div>    
+        
+    </main>
+
+    <!-- border -->
+    <div class="bar"></div>
+
+    <!-- 소개 page : along alone 이란?  -->
+    <section>
+        <div class="introduce">
+            <div class="main_icon">
+                <div>along alone</div>
+                <div>얼롱얼롱</div>
+            </div>
+            <div class="main_introduce_text">
+                <h2>What is '얼롱얼롱'?</h2>
+                <p> 얼롱얼롱은 '같이만큼 가치있는 혼자만의 시간'을 <br> 편안하게 보낼 수 있도록 도와주는<br> 맞춤형 공간 및 놀거리 검색 서비스 입니다.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- border -->
+    <div class="bar"></div>
+    
+
+    <!-- map -->
+    <!-- 작업필요!!! -->
+    <section>
+        <div class="map_wrap">
+            <div class="map_img">
+                <!-- 지도사진을 넣어야 합니닷 -->
+                <img src="" alt="">
+            </div>
+            <div class="map_content_box">
+                <div class="map_title">
+                    <input type="text" placeholder="현재 위치 : 경상북도 경산시 대학로 280 (대동 214-1)"><i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+
+                <div class="map_btn">
+                   
+                    <button type="button" class="btn btn-outline-primary btn-lg">혼밥</button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg">혼카페</button>
+                    <button type="button" class="btn btn-outline-success btn-lg">혼술</button>
+                    <button type="button" class="btn btn-outline-danger btn-lg">혼티비티</button>
+
+                </div>
+
+                
+                <!-- 가게 지점 이름 바꿔야 함 -->
+
+
+                <div class="store_address_wrap">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="store">
+                        <h3 class="store_name">낭만놀이</h3>
+                        <h4 class="store_address">대구 북구 대학로 23길 18-9 카페 낭만놀이</h4>
+                    </div>
+                </div>
+
+                <div class="store_address_wrap">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="store">
+                        <h3 class="store_name">낭만놀이</h3>
+                        <h4 class="store_address">대구 북구 대학로 23길 18-9 카페 낭만놀이</h4>
+                    </div>
+                </div>
+
+                <div class="store_address_wrap">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="store">
+                        <h3 class="store_name">낭만놀이</h3>
+                        <h4 class="store_address">대구 북구 대학로 23길 18-9 카페 낭만놀이</h4>
+                    </div>
+                </div>
+
+
+                <div class="store_address_wrap">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="store">
+                        <h3 class="store_name">낭만놀이</h3>
+                        <h4 class="store_address">대구 북구 대학로 23길 18-9 카페 낭만놀이</h4>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+
+        </div>
+    </section>
+
+
+    <!-- border -->
+    <div class="bar"></div>
+    
+    <!--honbab category  -->
+    <section>
+    <div class="honbab_category_wrap">
+         <!-- category header -->
+        <div class="category_header">
+            <span>혼놀카테고리</span>
+            <a href="./preparing.html"><span class="look_more">더보기 <i class="fa-solid fa-chevron-right"></i></span>
+            </a>
+        </div>
+
+            <div class="honbab_category_col_wrap">
+
+            <!-- category col -->
+
+            <div class="category_col">
+                <div class="card-wrapper">
+            
+                    <!-- card1  -->
+                     <div class="card">
+            
+                        
+                        <div class="card-banner">
+                            <img src="{%static "./img/rice.png"%}" alt="">
+                        </div>
+            
+            
+                        <div class="card-body">
+                            <p class="title">혼밥</p>
+                            <p class="desc"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit est, alias corporis totam adipisci reiciendis temporibus. Enim, quia! Velit excepturi consequuntur laborum animi quae veritatis. Aperiam culpa natus praesentium debitis?</p>
+                        </div>
+            
+                   
+                    </div>
+             
+                    <!-- card2  -->
+                    <div class="card">
+            
+                        
+                        <div class="card-banner">
+                            <img src="{%static "./img/honcafe.PNG"%}" alt="">
+                        </div>
+            
+            
+                        <div class="card-body">
+                            <p class="title">혼카페</p>
+                            <p class="desc"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. In cumque reiciendis a architecto impedit dolor, quasi enim natus ea cupiditate, repellendus necessitatibus error quis similique aut voluptatum voluptatibus dolores magni.</p>
+                        </div>
+                   </div> 
+            
+                    <!-- card3   -->
+            
+                    <div class="card">
+            
+                        
+                        <div class="card-banner">
+                            <img src="{%static "./img/hondrink.PNG"%}" alt="">
+                        </div>
+            
+            
+                        <div class="card-body">
+                            <p class="title">혼술</p>
+                            <p class="desc"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Natus ratione veniam reiciendis quod exercitationem, accusamus fugiat laboriosam sint placeat reprehenderit, possimus nihil? Cumque repellat assumenda rerum vel. Numquam, odit veniam. </p>
+                        </div>
+            
+            
+                    </div>
+            
+                    <!-- card 4  -->
+            
+                    <div class="card">
+            
+                        
+                        <div class="card-banner">
+                            <img src="https://images.unsplash.com/photo-1554797589-7241bb691973?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8amFwYW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" alt="banner">
+                        </div>
+            
+            
+                        <div class="card-body">
+                            <p class="title">혼티비티</p>
+                            <p class="desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam quod vitae repellendus voluptates esse tempora consectetur saepe nisi reiciendis quo totam similique, officiis doloremque vero aliquid. Modi corporis saepe nihil.</p>
+                        </div>
+            
+            
+                    </div> 
+
+                
+                </div>
+            
+            </div>
+            </div>
+
+       </div> 
+    </section>
+
+
+
+
+
+
+<!-- 아이콘 적용하려면 이 태그 있어야 함 -->
+    <script src="https://kit.fontawesome.com/73b35ca8d6.js" crossorigin="anonymous"></script>  
+</body>
+</html>

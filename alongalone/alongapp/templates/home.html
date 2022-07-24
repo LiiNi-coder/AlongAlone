@@ -1,12 +1,36 @@
+<!--{%load static%}은 static파일인 js나 css를 static폴더에서 가져오겠다는 뜻-->
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--불러온 static파일에서 특정 css파일을 적용하고 싶을때 밑줄처럼한다. 밑엔 예시로 css/home.css를 적용한 것-->
+    <link rel="stylesheet" href="{%static 'css/home.css'%}">
     <title>얼롱얼롱</title>
 </head>
 <body>
-    얼롱얼롱 메인화면
+    <h1>얼롱얼롱 메인화면</h1>
+    <br>
+    <div>
+        <h3>일단 임시로 아래엔 세부지점클래스 세부내용 </h3>
+        {%for spot in spots%}
+            {{spot.name}}
+            <br>
+            {{spot.picture}}
+            <br>
+            {{spot.location}}
+            <br>
+            {{spot.tag1}}
+            <br>
+            {{spot.tag2}}
+            <br>
+            {{spot.tag3}}
+            <br>
+            {{spot.star}}
+        {% endfor %}
+    </div>
+    
 </body>
 </html>

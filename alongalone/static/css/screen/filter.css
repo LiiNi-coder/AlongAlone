@@ -1,0 +1,129 @@
+
+
+#filter_main {
+height: 100%;
+}
+
+header {
+    z-index: 99;
+}
+
+#filter_main {
+    display: flex;
+
+}
+.filter_col_left {
+    width: 30%;
+    margin-top: 60px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.03)
+}
+
+.filter_col_left_wrap {
+    position: fixed;
+    bottom: 0;
+    width: 30%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter_col_left_wrap img {
+    width: 200px;
+    height: 200px;
+    background-color: blue;
+    margin-bottom: 20px;
+}
+
+.filter_col_left_wrap span {
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 30px;
+}
+
+.filter_col_right{
+    margin-top: 60px;
+    width: 70%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter_col_title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    margin-top: 150px;
+
+}
+.filter_col_title h1 {
+    font-size: 70px;
+}
+.filter_col_title h3 {
+    font-size: 30px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.filter_col_option{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin-top: 110px;
+}
+
+.filter_col_option1, .filter_col_option2, .filter_col_option3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filter_col_option1 h1 {
+    font-size: 30px;
+    color: #7993C4;
+}
+.filter_col_option2 h1 {
+    font-size: 30px;
+    color: #32D5A5;
+}
+.filter_col_option3 h1 {
+    font-size: 30px;
+    color: #D1C5DE;
+}
+
+.filter_col_option form select {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    width: 200px;
+}
+.filter_col_option span {
+    margin: 0px 30px;
+    
+}
+
+.filter_col_selectbtn {
+    margin-top: 150px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.filter_col_selectbtn i {
+    margin: 0px 10px;
+}
+
+.filter_col_selectbtn i:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+}
