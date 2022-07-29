@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from alongapp import views
+from accountapp import views as accountapp_views
 from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", views.index, name="index"),
+    
+    #계정 관련
+    path("login/", accountapp_views.login_login, name="login"),
+    path("logout/", accountapp_views.logout, name="logout"),
+    path("signup/", accountapp_views.signup_signup, name="signup")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
