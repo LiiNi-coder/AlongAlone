@@ -15,16 +15,33 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from alongapp import views
-from accountapp import views as accountapp_views
 from django.conf.urls.static import static
 from django.conf import settings
+from alongapp import views
+from accountapp import views as accountapp_views
+from communityapp import views as communityapp_views
+from commentapp import views as commentapp_views
+"""
+주의사항:
+    각 앱마다 views이름이 똑같으니 윗줄에 as ~로 views를 앱마다 구분했으니
+    path 두번째 인자 적을때 헷갈리지말것.
+"""
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    #alongapp 관련 URL
     path("", views.index, name="index"),
-    
-    #계정 관련
+    path("map/", views.map, name="map"),
+
+    #accountapp 관련 URL
     path("login/", accountapp_views.login_login, name="login"),
     path("logout/", accountapp_views.logout, name="logout"),
-    path("signup/", accountapp_views.signup_signup, name="signup")
+    path("signup/", accountapp_views.signup_signup, name="signup"),
+
+    #communityapp 관련 URL
+    
+
+    #commentapp 관련 URL
+    
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
