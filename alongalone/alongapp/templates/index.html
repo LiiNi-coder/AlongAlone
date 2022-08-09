@@ -1,8 +1,84 @@
 {%extends "base.html"%}
 
+{% block head %}
+<style>
+    .map_wrap {position:relative;overflow:hidden;width:100%;height:350px;}
+    .radius_border{border:1px solid #919191;border-radius:5px;}     
+    .custom_typecontrol {position:absolute;top:10px;left:10px;overflow:hidden;width:65px;height:30px;margin:0;padding:0;z-index:1;font-size:12px;font-family:'Malgun Gothic', '맑은 고딕', sans-serif;}
+    .custom_typecontrol span {display:block;width:65px;height:30px;float:left;text-align:center;line-height:30px;cursor:pointer;}
+    .custom_typecontrol .btn {background:#fff;background:linear-gradient(#fff,  #e6e6e6);}       
+    .custom_typecontrol .btn:hover {background:#f5f5f5;background:linear-gradient(#f5f5f5,#e3e3e3);}
+    .custom_typecontrol .btn:active {background:#e6e6e6;background:linear-gradient(#e6e6e6, #fff);}    
+    .custom_typecontrol .selected_btn {color:#fff;background:#425470;background:linear-gradient(#425470, #5b6d8a);}
+    .custom_typecontrol .selected_btn:hover {color:#fff;}   
+    .custom_zoomcontrol {position:absolute;top:50px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;} 
+    .custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}     
+    .custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}             
+    .custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}            
+</style>
+{% endblock head %}
+
+
 {%block loginContent%}
 
 {% endblock %}
 {%block mainContent%}
     index.html입니다.
+    <!--안에 버튼 있는 지도-->
+    <div class="map_wrap">
+        <div id="map" style="width:100%;height:100%;postion:relative;overflow:hidden;"></div>
+        <!--맵 내부 컨트롤div-->
+        <div class="custom_typecontrol radius_border">
+            <!--내위치 버튼 1개만-->
+            <span id="btn_NowPosition" onselectstart='return false' class="btn" onclick="panToNowPosition()">내 위치</span>
+        </div>
+    </div>
+
+
+    <!--이 아래부턴 스크립트들 목록-->
+
+    <!--카카오api불러오는 코드(실제코드보다 앞서야함/라이브러리 적용가능)-->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b39f18a067cf513f0da4b9bce298ced0"></script>
+    
+    <!--카카오맵 설정하고 적용하는 실제코드-->
+    <script>
+
+        //기본 내위치
+        var latitude = 35.5317;
+        var longitude = 128.3641;
+
+        var container = document.getElementById("map");
+        var options = {
+            //center:지도의 중앙위치
+            center : new kakao.maps.LatLng(latitude, longitude),
+            //level:처음 지도의 확대레벨
+            level : 3
+        };
+
+        
+        //내위치 버튼을 누르면 실행되는 핸들러
+        function panToNowPosition(){
+            if("geolocation" in navigator){
+                //위치정보 사용가능한 환경
+                navigator.geolocation.getCurrentPosition(function (pos){
+                    latitude = pos.coords.latitude;
+                    longitude = pos.coords.longitude;
+                    var marker = new kakao.maps.Marker({
+                        map: map,
+                        /*############image 속성도 바꿔야함*/
+                        position: new kakao.maps.LatLng(latitude, longitude)
+                    });
+                    //마커를 지도위에 표시
+                    marker.setMap(map);
+                    map.panTo(new kakao.maps.LatLng(latitude, longitude));
+                });
+            }
+            
+        }
+        
+        //지도를 생성
+        var map = new kakao.maps.Map(container, options);
+        var zoomControl = new kakao.maps.ZoomControl();
+        map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+    </script>
 {%endblock%}
