@@ -39,7 +39,12 @@ urlpatterns = [
     path("signup/", accountapp_views.signup_signup, name="signup"),
 
     #communityapp 관련 URL
-    
+    path("honbab/", communityapp_views.honbab, name="honbab"), #혼밥 게시판 메인화면
+    path("modelformcreate/", communityapp_views.modelformcreate, name="modelformcreate"),  #장고에서는 POST, GET 함수 하나로 처리
+        #상세페이지
+    path('detail/<int:blog_id>', communityapp_views.detail, name='detail'),  
+    #몇번째 블로그 글에 해당하는지(primary key) 그 값을 추가적으로 전달해야 함. 
+
 
     #commentapp 관련 URL
     
