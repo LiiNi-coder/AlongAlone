@@ -1,29 +1,183 @@
-{%extends "board_main_base.html"%}
+<!-- 게시판 메인화면들의 base.html -->
+
 {% load static %}
-{% block board_title %}
-    <title>main화면</title>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block style %}
-    <link rel="stylesheet" href="{% static 'css/screen/main/honbab.css' %}">
-{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 각 게시판마다 주소창에 뜨는 title명 ex.혼밥, 혼술 -->
+    
+        <title>혼밥(main화면)</title>
+    
 
-<!-- mypage로 가게 수정해야 함 -->
-{% block myprofile %}
-    <a href="/honbabmyprofile.html">
-{% endblock %}
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 
-{% block board_h1 %}
-    <h1>혼밥</h1>
-{% endblock %}
-   
-<!-- 여기는 write파일 하나로 통일해도 될듯 -->
-{% block write %}   
-    <a href="{% url 'honbabwrite' %}">
-{% endblock %}
-     
-<!-- 이거도 하나로 통일해도 될듯 -->
-{% block detail %}
-    <a href="{% url 'honbabdetail' %}">
-{% endblock %}
+    <!-- 각 게시판마다 다르게 적용되는 css(ex.배경 색상) -->
+    
+        <link rel="stylesheet" href="{% static 'css/screen/main/honbab.css' %}">
+    
+</head>
+
+<body>
+
+    <!-- header -->
+    <header>
+
+        <div class="header-col">
+            <img class="header-logo" src="{% static 'img/logowhite.PNG' %}">
+            <div class="header-title">
+                <span>along</span>
+                <span>alone</span>
+            </div>
+        </div>
+
+        <div class="header-col">
+            <a href="{% url 'index' %}">혼밥</a>
+            <a href="{% url 'honsul' %}">혼술</a>
+            <a href="{% url 'honcafe' %}">혼카페</a>
+            <a href="{% url 'honnol' %}">혼놀</a>
+        </div>
+
+        <span class="header-col-bar">
+            <div class="header-bar"></div>
+            <input class="header-bar-search" type="text">
+
+            <img src="{% static 'img/scrap.png' %}" alt="">
+            <img src="{% static 'img/alarm.png' %}" alt="">
+
+            <!-- 각 게시판마다 프로필을 누르면 그 게시판에 해당하는 프로필로 이동 -->
+            
+                <a href="{% url 'honbabmyprofile' %}">
+                    <div id="mypage"></div>
+                </a>
+            
+        </span>
         
+    </header>
+
+    <!-- 게시판 title -->
+
+    <div class="main_title">
+        <!-- 각 게시판 이름이 들어감 -->
+        
+            <h1>혼밥</h1>
+       
+
+        <div class="span_wrap">
+            <div class="span_wrap_col1">
+                <span>최신순</span>
+                <span>좋아요순</span>
+                <span>댓글순</span>
+            </div>
+
+            <!-- 글쓰기 화면으로 넘어가는 url -->
+              
+                <a href="{% url 'honbabwrite' %}">
+                    <div class="span_wrap_col2">
+                        <span>작성하기</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
+                </a>
+           
+        </div>
+    </div>
+
+    <!-- boxes -->
+
+    <!-- first -->
+
+    {% for post in posts %}
+    <div id="box">
+
+        <!-- honbab box -->
+
+        <!-- box title 누르면 상세 페이지로 (honbabdetail.html) 이동 -->
+
+        
+        <div class="honbab_box">
+
+            <!-- 이거도 하나로 통일해도 될듯 -->
+            
+                <a href="{% url 'honbabdetail' %}">
+        
+            <div class="box_title">
+                    <div class="box_img"></div>
+        
+                    <div class="box_text_wrap">
+                        <div class="box_name">김얼롱</div>
+                        <div class="box_content_name">{{ post.title }}</div>
+                    </div>
+                    
+                </div>
+            </a>
+
+            <div class="box_preview">
+                <p>
+                    {{ post.body }}
+                </p>
+            </div>
+            
+            <div class="box_info">
+
+                <div class="box_info_map_wrap">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>위치</span>
+                </div>
+
+                <div class="box_info_icon_wrap">
+                    <i class="fa-solid fa-heart fa-lg"></i>
+                    <span>123</span>
+                    <i class="fa-solid fa-comment fa-lg"></i>
+                    <span>456</span>
+                </div>
+
+            </div>
+
+        </div>
+        
+        <!-- popular box -->
+
+        <div class="popular_box">
+            <h2>인기 얼롱인</h2>
+
+            <div class="popular_info_wrap">
+                <div class="popular_img"></div>
+                <div class="popular_name">이얼롱</div>
+            </div>
+
+            <div class="popular_follow_wrap">
+
+                <div class="popular_follow_col">
+                    <div>게시글수</div>
+                    <div>180</div>
+                </div>
+
+                <div class="popular_follow_col">
+                    <div>팔로워</div>
+                    <div>100</div>
+                </div>
+
+                <div class="popular_follow_col">
+                    <div>팔로잉</div>
+                    <div>50</div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    {% endfor %}
+
+    <!-- popup -->
+
+    <script src="https://kit.fontawesome.com/73b35ca8d6.js" crossorigin="anonymous"></script>
+    <script src="js/honbab.js"></script>
+</body>
+</html>

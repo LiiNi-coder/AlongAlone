@@ -1,4 +1,5 @@
-<!-- 각 게시판의 메인화면(글 목록 화면)의 base.html -->
+<!-- 게시판 메인화면들의 base.html -->
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -7,13 +8,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block board_title %}
     
+    <!-- 각 게시판마다 주소창에 뜨는 title명 ex.혼밥, 혼술 -->
+    {% block board_title %}
+
     {% endblock %}
+
     <!-- favicon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon.png' %}">
-
     <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!-- 각 게시판마다 다르게 적용되는 css(ex.배경 색상) -->
     {% block style %}
     
     {% endblock %}
@@ -30,7 +35,6 @@
                 <span>along</span>
                 <span>alone</span>
             </div>
-
         </div>
 
         <div class="header-col">
@@ -46,25 +50,23 @@
 
             <img src="{% static 'img/scrap.png' %}" alt="">
             <img src="{% static 'img/alarm.png' %}" alt="">
-            <!-- mypage로 가게 수정해야 함 -->
+
+            <!-- 각 게시판마다 프로필을 누르면 그 게시판에 해당하는 프로필로 이동 -->
             {% block myprofile %}
             
             {% endblock %}
-                <div id="mypage"></div>
-            </a>
-
-
         </span>
-
-
+        
     </header>
 
-    <!-- honbab title -->
+    <!-- 게시판 title -->
 
     <div class="main_title">
+        <!-- 각 게시판 이름이 들어감 -->
         {% block board_h1 %}
         
         {% endblock %}
+
         <div class="span_wrap">
             <div class="span_wrap_col1">
                 <span>최신순</span>
@@ -72,65 +74,50 @@
                 <span>댓글순</span>
             </div>
 
-            <!-- 여기는 write파일 하나로 통일해도 될듯 -->
+            <!-- 글쓰기 화면으로 넘어가는 url -->
             {% block write %}   
            
             {% endblock %}
-                <div class="span_wrap_col2">
-                    <span>작성하기</span>
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-            </a>
-
         </div>
-
-
-
-
     </div>
 
     <!-- boxes -->
 
     <!-- first -->
 
-
+    {% for post in posts %}
     <div id="box">
 
         <!-- honbab box -->
 
-
         <!-- box title 누르면 상세 페이지로 (honbabdetail.html) 이동 -->
 
+        
         <div class="honbab_box">
 
             <!-- 이거도 하나로 통일해도 될듯 -->
-            {% block detail %}
             
+            {% block detail %}
+                 
             {% endblock %}
-                <div class="box_title">
+        
+            <div class="box_title">
                     <div class="box_img"></div>
-
+        
                     <div class="box_text_wrap">
                         <div class="box_name">김얼롱</div>
-                        <div class="box_content_name">게시글 제목입니다 가나다라마바사</div>
+                        <div class="box_content_name">{{ post.title }}</div>
                     </div>
+                    
                 </div>
             </a>
+
             <div class="box_preview">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quae perspiciatis autem alias
-                    soluta
-                    fuga error assumenda omnis maiores commodi nisi, cumque possimus. Laboriosam, eaque ex
-                    asperiores
-                    fuga
-                    ea perspiciatis.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor eos ex quam, vitae consequuntur
-                    culpa
-                    cupiditate error reiciendis voluptas fugiat officiis quasi harum, quae ipsa fuga aliquam.
-                    Reprehenderit,
-                    consectetur necessitatibus.
+                <p>
+                    {{ post.body }}
                 </p>
             </div>
-
+            
             <div class="box_info">
 
                 <div class="box_info_map_wrap">
@@ -144,12 +131,11 @@
                     <i class="fa-solid fa-comment fa-lg"></i>
                     <span>456</span>
                 </div>
+
             </div>
 
-
-
         </div>
-
+        
         <!-- popular box -->
 
         <div class="popular_box">
@@ -160,7 +146,6 @@
                 <div class="popular_name">이얼롱</div>
             </div>
 
-
             <div class="popular_follow_wrap">
 
                 <div class="popular_follow_col">
@@ -178,208 +163,16 @@
                     <div>50</div>
                 </div>
 
-
-
-
-
             </div>
 
-
         </div>
-
 
     </div>
-
-
-    <!-- second -->
-    <div id="box">
-
-        <!-- honbab box -->
-        <div class="honbab_box">
-
-            <a href="honbabdetail.html">
-                <div class="box_title">
-                    <div class="box_img"></div>
-
-                    <div class="box_text_wrap">
-                        <div class="box_name">김얼롱</div>
-                        <div class="box_content_name">게시글 제목입니다 가나다라마바사</div>
-                    </div>
-                </div>
-            </a>
-
-            <div class="box_preview">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quae perspiciatis autem alias
-                    soluta
-                    fuga error assumenda omnis maiores commodi nisi, cumque possimus. Laboriosam, eaque ex
-                    asperiores
-                    fuga
-                    ea perspiciatis.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor eos ex quam, vitae consequuntur
-                    culpa
-                    cupiditate error reiciendis voluptas fugiat officiis quasi harum, quae ipsa fuga aliquam.
-                    Reprehenderit,
-                    consectetur necessitatibus.
-                </p>
-            </div>
-
-            <div class="box_info">
-
-                <div class="box_info_map_wrap">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>위치</span>
-                </div>
-
-                <div class="box_info_icon_wrap">
-                    <i class="fa-solid fa-heart fa-lg"></i>
-                    <span>123</span>
-                    <i class="fa-solid fa-comment fa-lg"></i>
-                    <span>456</span>
-                </div>
-            </div>
-
-
-
-        </div>
-
-        <!-- popular box -->
-
-        <div class="popular_box">
-
-            <div class="popular_info_wrap">
-                <div class="popular_img"></div>
-                <div class="popular_name">이얼롱</div>
-            </div>
-
-
-            <div class="popular_follow_wrap">
-
-                <div class="popular_follow_col">
-                    <div>게시글수</div>
-                    <div>180</div>
-                </div>
-
-                <div class="popular_follow_col">
-                    <div>팔로워</div>
-                    <div>100</div>
-                </div>
-
-                <div class="popular_follow_col">
-                    <div>팔로잉</div>
-                    <div>50</div>
-                </div>
-
-
-
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-    <!-- third -->
-    <div id="box">
-
-        <!-- honbab box -->
-        <div class="honbab_box">
-
-            <a href="honbabdetail.html">
-                <div class="box_title">
-                    <div class="box_img"></div>
-
-                    <div class="box_text_wrap">
-                        <div class="box_name">김얼롱</div>
-                        <div class="box_content_name">게시글 제목입니다 가나다라마바사</div>
-                    </div>
-                </div>
-            </a>
-            <div class="box_preview">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque quae perspiciatis autem
-                    alias
-                    soluta
-                    fuga error assumenda omnis maiores commodi nisi, cumque possimus. Laboriosam, eaque ex
-                    asperiores
-                    fuga
-                    ea perspiciatis.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor eos ex quam, vitae
-                    consequuntur
-                    culpa
-                    cupiditate error reiciendis voluptas fugiat officiis quasi harum, quae ipsa fuga aliquam.
-                    Reprehenderit,
-                    consectetur necessitatibus.
-                </p>
-            </div>
-
-            <div class="box_info">
-
-                <div class="box_info_map_wrap">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>위치</span>
-                </div>
-
-                <div class="box_info_icon_wrap">
-                    <i class="fa-solid fa-heart fa-lg"></i>
-                    <span>123</span>
-                    <i class="fa-solid fa-comment fa-lg"></i>
-                    <span>456</span>
-                </div>
-            </div>
-
-
-
-        </div>
-
-        <!-- popular box -->
-
-        <div class="popular_box">
-
-
-            <div class="popular_info_wrap">
-                <div class="popular_img"></div>
-                <div class="popular_name">이얼롱</div>
-            </div>
-
-
-            <div class="popular_follow_wrap">
-
-                <div class="popular_follow_col">
-                    <div>게시글수</div>
-                    <div>180</div>
-                </div>
-
-                <div class="popular_follow_col">
-                    <div>팔로워</div>
-                    <div>100</div>
-                </div>
-
-                <div class="popular_follow_col">
-                    <div>팔로잉</div>
-                    <div>50</div>
-                </div>
-
-
-
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
+    {% endfor %}
 
     <!-- popup -->
-
-
 
     <script src="https://kit.fontawesome.com/73b35ca8d6.js" crossorigin="anonymous"></script>
     <script src="js/honbab.js"></script>
 </body>
-
 </html>

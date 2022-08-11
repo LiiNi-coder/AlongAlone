@@ -1,4 +1,5 @@
-<!-- 글쓰기 base.html -->
+<!-- 글쓰기 화면들의 base.html -->
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -53,11 +54,10 @@
 
             <img src="{% static 'img/scrap.png' %}" alt="">
             <img src="{% static 'img/alarm.png' %}" alt="">
-            <!-- mypage로 가게 수정해야 함 -->
-            <a href="#">
-                <div id="mypage"></div>
-            </a>
-
+            
+            {% block myprofile %}
+        
+            {% endblock %}
 
         </span>
 
@@ -65,18 +65,36 @@
     </header>
 
     <!-- title -->
+    <form action="{% url 'create' %}" method="POST">
+        {% csrf_token %}
+        <div class="boardTitle">
+            <label for="title"><h1>제목</h1></label><br/>
+            <input type="text" name="title" id="title">
+        </div>
+       
+        <div id = "board">
+            <label for="body">본문</label><br/>
+            <textarea name="body" id="body" cols="30" rows="10"></textarea>
+        </div>
+        <div id = "board_btn"><input type="submit" value="글 생성하기"></div>
+        
+    </form>
 
+    <!--  
+         {% block write_category_select %}
+        
+        {% endblock %}
     <div class="boardTitle">
         <h1>제목을 입력하세요</h1>
 
-    {% block write_category_select %}
-        
-    {% endblock %}
-    </div>
 
+    
+    </div>
+        -->
 
     <!-- board -->
-
+    
+    <!--  
     <div id="board">
         <div id="summernote"></div>
         <script>
@@ -100,7 +118,7 @@
         </div>
 
     </div>
-
+        -->
     {% block write_css %}
    
     {% endblock %}

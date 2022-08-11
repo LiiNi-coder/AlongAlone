@@ -4,7 +4,7 @@ from django.db import models
 # makemigrations -> migrate 잊지 말기
 class Blog(models.Model):
     title = models.CharField(max_length=200)
-    category = models.CharField(max_length=5) #어떤 게시판에 글을 쓸 것인지 카테고리 선택(툴바 선택 미구현)
+    category = models.CharField(max_length=10, default ="") #어떤 게시판에 글을 쓸 것인지 카테고리 선택(툴바 선택 미구현)
     photo = models.ImageField(blank=True, null=True, upload_to ='blog_photo')   
     #미디어 파일을 업로드 할 때마다 자동으로 'blog_photo'라는 폴더 생성해서 그 안에 파일들
     body = models.TextField()

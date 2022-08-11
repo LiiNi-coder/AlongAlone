@@ -1,4 +1,4 @@
-<!-- 각 게시판의 상세페이지 base.html -->
+<!-- 게시글 상세 페이지들의 base.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +68,10 @@
                 <span style="color:#F0F0F0; font-weight: 350;">전체 게시물 보기</span>
             </div>
 
-            <a href="honbabwrite.html">
+            <!-- 상세페이지에 글 작성버튼이 필요한가?? 일단 연결은 해둠. -->
+            {% block write_button %}
+            
+            {% endblock %}
                 <div class="span_wrap_col2 " id="detail_write_wrap">
                     <span id="detail_write">작성하기</span>
                     <i class="fa-solid fa-chevron-right"></i>
