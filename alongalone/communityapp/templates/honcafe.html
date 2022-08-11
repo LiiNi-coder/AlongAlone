@@ -35,19 +35,89 @@
     </a>
 {% endblock %}
      
-<!-- 게시글 상세 페이지로 넘어가는 링크 -->
-<!-- detail html도 하나로 통일해도 될듯 -->
-{% block detail %}
-    <a href="{% url 'honcafedetail' %}">
-        <div class="box_title">
-            <div class="box_img"></div>
+<!-- 작성된 글 목록을 보여주는 부분 -->
+{% block content %}
+    
+    {% for post in posts %}
+        <div id="box">
+            <!-- honbab box -->
 
-            <div class="box_text_wrap">
-                <div class="box_name">김얼롱</div>
-                <div class="box_content_name">게시글 제목입니다 가나다라마바사</div>
+            <!-- box title 누르면 상세 페이지로 (honbabdetail.html) 이동 -->
+
+            <div class="honbab_box">
+                
+                <a href="{% url 'honcafedetail' %}">
+                
+                    <div class="box_title">
+                            
+                            <div class="box_img"></div>
+                
+                            <div class="box_text_wrap">
+                                <div class="box_name">김얼롱</div>
+                                <div class="box_content_name">{{ post.title }}</div>
+                            </div>
+                            
+                    
+                    </div>
+                
+                </a>
+
+                <div class="box_preview">
+                    <p>
+                        {{ post.body }}
+                    </p>
+                </div>
+                
+                <div class="box_info">
+
+                    <div class="box_info_map_wrap">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>위치</span>
+                    </div>
+
+                    <div class="box_info_icon_wrap">
+                        <i class="fa-solid fa-heart fa-lg"></i>
+                        <span>123</span>
+                        <i class="fa-solid fa-comment fa-lg"></i>
+                        <span>456</span>
+                    </div>
+
+                </div>
+
             </div>
-            
+        
+        <!-- popular box -->
+
+        <div class="popular_box">
+            <h2>인기 얼롱인</h2>
+
+            <div class="popular_info_wrap">
+                <div class="popular_img"></div>
+                <div class="popular_name">이얼롱</div>
+            </div>
+
+            <div class="popular_follow_wrap">
+
+                <div class="popular_follow_col">
+                    <div>게시글수</div>
+                    <div>180</div>
+                </div>
+
+                <div class="popular_follow_col">
+                    <div>팔로워</div>
+                    <div>100</div>
+                </div>
+
+                <div class="popular_follow_col">
+                    <div>팔로잉</div>
+                    <div>50</div>
+                </div>
+
+            </div>
+
         </div>
-    </a>
+
+    </div>
+    {% endfor %}
 {% endblock %}
         
