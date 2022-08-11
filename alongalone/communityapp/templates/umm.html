@@ -1,0 +1,11 @@
+<!-- 여기서부터 백엔드 -->
+
+<h1>혼밥</h1><a href="{% url 'modelformcreate' %}">새 글 작성</a><br>
+
+{% for post in posts %} 
+<a href="{% url 'detail' post.id %}"><h3>제목 : {{ post.title }}</h3></a> 
+    
+{{ post.body }} 
+    
+{% endfor %} 
+<br><br><br> 

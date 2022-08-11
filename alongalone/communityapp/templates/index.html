@@ -1,0 +1,29 @@
+{%extends "board_main_base.html"%}
+{% load static %}
+{% block board_title %}
+    <title>main화면</title>
+{% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/screen/main/honbab.css' %}">
+{% endblock %}
+
+<!-- mypage로 가게 수정해야 함 -->
+{% block myprofile %}
+    <a href="/honbabmyprofile.html">
+{% endblock %}
+
+{% block board_h1 %}
+    <h1>혼밥</h1>
+{% endblock %}
+   
+<!-- 여기는 write파일 하나로 통일해도 될듯 -->
+{% block write %}   
+    <a href="{% url 'honbabwrite' %}">
+{% endblock %}
+     
+<!-- 이거도 하나로 통일해도 될듯 -->
+{% block detail %}
+    <a href="{% url 'honbabdetail' %}">
+{% endblock %}
+        

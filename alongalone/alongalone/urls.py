@@ -30,7 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     #alongapp 관련 URL
-    path("", views.index, name="index"),
+    #path("", views.index, name="index"),
     path("map/", views.map, name="map"),
 
     #accountapp 관련 URL
@@ -39,13 +39,21 @@ urlpatterns = [
     path("signup/", accountapp_views.signup_signup, name="signup"),
 
     #communityapp 관련 URL
-    path("honbab/", communityapp_views.honbab, name="honbab"), #혼밥 게시판 메인화면
-    path("modelformcreate/", communityapp_views.modelformcreate, name="modelformcreate"),  #장고에서는 POST, GET 함수 하나로 처리
-        #상세페이지
+    path("", communityapp_views.index, name="index"), #혼밥 게시판 메인화면
+    path("honcafe/", communityapp_views.honcafe, name="honcafe"), #혼밥 게시판 메인화면
+    path("honsul/", communityapp_views.honsul, name="honsul"), #혼밥 게시판 메인화면
+    path("honnol/", communityapp_views.honnol, name="honnol"), #혼밥 게시판 메인화면
+
+    path("honbabwrite/", communityapp_views.honbabwrite, name="honbabwrite"),
+    path("honsulwrite/", communityapp_views.honsulwrite, name="honsulwrite"),
+    path("honnolwrite/", communityapp_views.honnolwrite, name="honnolwrite"),
+    path("honcafewrite/", communityapp_views.honcafewrite, name="honcafewrite"),
+    
     path('detail/<int:blog_id>', communityapp_views.detail, name='detail'),  
-    #몇번째 블로그 글에 해당하는지(primary key) 그 값을 추가적으로 전달해야 함. 
-
-
+    path('/honbabdetail/', communityapp_views.honbabdetail, name='honbabdetail'), 
+    path('/honcafedetail/', communityapp_views.honcafedetail, name='honcafedetail'), 
+    path('/honsuldetail/', communityapp_views.honsuldetail, name='honsuldetail'), 
+    path('/honnoldetail/', communityapp_views.honnoldetail, name='honnoldetail'), 
     #commentapp 관련 URL
     
 
