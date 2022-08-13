@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 각 게시판마다 주소창에 뜨는 title명 ex.혼밥, 혼술 -->
+    <!-- 게시판 제목(주소창에 뜨는 title) -->
     {% block board_title %}
 
     {% endblock %}
@@ -18,7 +18,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon.png' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
-    <!-- 각 게시판마다 다르게 적용되는 css(ex.배경 색상) -->
+    <!-- 게시판 별 다르게 적용되는 css -->
     {% block style %}
     
     {% endblock %}
@@ -51,7 +51,7 @@
             <img src="{% static 'img/scrap.png' %}" alt="">
             <img src="{% static 'img/alarm.png' %}" alt="">
 
-            <!-- 각 게시판마다 프로필을 누르면 그 게시판에 해당하는 프로필로 이동 -->
+            <!-- 게시판 별 프로필로 이동하는 url -->
             {% block myprofile %}
             
             {% endblock %}
@@ -59,10 +59,11 @@
         
     </header>
 
-    <!-- 게시판 title -->
+    <!-- 게시판 제목(제일 상단에 보임) -->
 
     <div class="main_title">
-        <!-- 각 게시판 이름이 들어감 -->
+
+        <!-- 각 게시판 별 이름 -->
         {% block board_h1 %}
         
         {% endblock %}
@@ -81,15 +82,12 @@
         </div>
     </div>
 
-    <!-- boxes -->
-
-    <!-- first -->
-
+    <!-- boxes (게시글 목록 보여주는 부분)-->
     {% block content %}
 
     {% endblock %}
-    <!-- popup -->
-
+    
+    !-- popup -->
     <script src="https://kit.fontawesome.com/73b35ca8d6.js" crossorigin="anonymous"></script>
     <script src="js/honbab.js"></script>
 </body>

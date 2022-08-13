@@ -1,7 +1,8 @@
 from django import forms
 from .models import Blog
 
-#django modelform 
+
+#django modelform (html form / django form은 사용 x)
 class BlogModelForm(forms.ModelForm):
     class Meta:
         model = Blog  #어떤 모델을 기반으로 자동으로 form을 생성할 것인지

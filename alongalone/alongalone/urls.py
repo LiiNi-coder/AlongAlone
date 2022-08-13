@@ -38,17 +38,19 @@ urlpatterns = [
     path("logout/", accountapp_views.logout, name="logout"),
     path("signup/", accountapp_views.signup_signup, name="signup"),
 
-    #communityapp 관련 URL
-    ## 각 게시판의 main 화면 url
-    path("", communityapp_views.index, name="index"), #기본 메인화면은 index.html로 혼밥 게시판
+    ##########################  communityapp 관련 URL  ################################################
+    ## 각 게시판의 main 화면 url ##
+    path("", communityapp_views.index, name="index"), #기본 메인화면은 혼밥 게시판으로, index.html
     path("honcafe/", communityapp_views.honcafe, name="honcafe"), 
     path("honsul/", communityapp_views.honsul, name="honsul"), 
     path("honnol/", communityapp_views.honnol, name="honnol"), 
 
-    ## 각 게시판의 글작성 화면 url
-     # html form 을 이용해 블로그 객체 만들기
+    ## 각 게시판의 글작성 화면 url ##
+        # html form 을 이용해 블로그 객체 만들기 #
     path('new/', communityapp_views.new, name='new'),
     path('create/', communityapp_views.create, name='create'),
+
+        # 각 게시판 글쓰기 url #
     path("honbabwrite/", communityapp_views.honbabwrite, name="honbabwrite"),
     path("honsulwrite/", communityapp_views.honsulwrite, name="honsulwrite"),
     path("honnolwrite/", communityapp_views.honnolwrite, name="honnolwrite"),
@@ -67,6 +69,8 @@ urlpatterns = [
     path("honsulmyprofile/", communityapp_views.honsulmyprofile, name="honsulmyprofile"),
     path("honnolmyprofile/", communityapp_views.honnolmyprofile, name="honnolmyprofile"),
     
+    ##########################  communityapp 관련 URL  ################################################
+
     #commentapp 관련 URL
     
 

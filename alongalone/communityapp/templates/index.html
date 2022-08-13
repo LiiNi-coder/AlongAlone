@@ -1,30 +1,31 @@
 <!-- board_main_base.html을 공통으로 가지고, 공통되지 않는 부분들 block에 적음. -->
+<!-- index.html이 혼밥 게시판이자 메인화면 -->
 {%extends "board_main_base.html"%}  
 {% load static %}
 
-<!-- 주소창에 뜰 title -->
+<!-- 게시판 제목(주소창) -->
 {% block board_title %}
     <title>혼밥(main화면)</title>
 {% endblock %}
 
-<!-- 각 게시판의 css(배경 색상 등) -->
+<!-- 게시판 css -->
 {% block style %}
     <link rel="stylesheet" href="{% static 'css/screen/main/honbab.css' %}">
 {% endblock %}
 
-<!-- 각 게시판별 프로필 바로가기 -->
+<!-- 해당 게시판 프로필 -->
 {% block myprofile %}
     <a href="{% url 'honbabmyprofile' %}">
         <div id="mypage"></div>
     </a>
 {% endblock %}
 
-<!-- 게시판 제목 -->
+<!-- 게시판 제목(화면 상단) -->
 {% block board_h1 %}
     <h1>혼밥</h1>
 {% endblock %}
    
-<!-- 각 게시판 글쓰기 화면으로 넘어가는 링크 -->
+<!-- 게시판 글쓰기 화면 url -->
 <!-- write html은 하나로 통일해도 될듯 ? 아닌가 각 게시판 따로 써야하나-->
 {% block write %}   
     <a href="{% url 'honbabwrite' %}">
@@ -35,29 +36,25 @@
     </a>
 {% endblock %}
 
-<!-- 작성된 글 목록을 보여주는 부분 -->
+<!-- 작성된 글 목록 -->
 {% block content %}
     
     {% for post in posts %}
-        <div id="box">
-            <!-- honbab box -->
 
-            <!-- box title 누르면 상세 페이지로 (honbabdetail.html) 이동 -->
+        <!-- honbab box -->
+        <div id="box">
 
             <div class="honbab_box">
                 
-                <a href="{% url 'honbabdetail' %}">
+                <a href="{% url 'honbabdetail' %}">   <!-- box title 누르면 상세 페이지로 (honbabdetail.html) 이동 -->
                 
                     <div class="box_title">
-                            
                             <div class="box_img"></div>
                 
                             <div class="box_text_wrap">
                                 <div class="box_name">김얼롱</div>
                                 <div class="box_content_name">{{ post.title }}</div>
                             </div>
-                            
-                    
                     </div>
                 
                 </a>
@@ -86,6 +83,7 @@
 
             </div>
         
+
         <!-- popular box -->
 
         <div class="popular_box">
