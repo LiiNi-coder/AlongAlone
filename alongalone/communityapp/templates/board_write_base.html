@@ -79,10 +79,12 @@
                         <label for="title" style="color: white;">제목</label>
                         <input type="text" class="form-control" id="title" placeholder="제목 입력(4-100)" name="title" maxlength="100"
                             required="required" pattern=".{4,100}"><!-- 제목 -->
-                        <input type="file" name ="photo" ><!-- 사진 -->
+                        <input type="file" onerror="this.style.display='none'" name ="photo" ><!-- 사진 -->
                         
-                        <label for="location" style="color: white;">장소 입력</label>
-                        <input type="text" name ="location">
+                        <label for="location" style="color: white;" >장소 입력</label>
+                        {% comment %} <input type="text" name ="location" placeholder="제목 입력(1-100)" pattern=".{1,100}"> {% endcomment %}
+                        <input type="text" class="form-control" id="location" placeholder="장소 입력(1글자 이상)" name="location" maxlength="100"
+                            required="required" pattern=".{1,100}">
                         <!-- form 태그는 제출을 해야 값이 저장되서, 선택만 해도 되는 select 사용
                             option value 숫자는 데이터베이스에 저장할 때, 혼밥을 선택하면 1을 저장한다는 뜻--> 
                         <select name="category" id="catetgory" style="color : white;"> 

@@ -74,11 +74,8 @@ urlpatterns = [
     
     ##########################  communityapp 관련 URL  ################################################
 
-    #그냥 실험
-    path("hwi/", communityapp_views.hwi, name="hwi"),
-
 
     #commentapp 관련 URL
-    
+    path('create_comment/<int:blog_id>', communityapp_views.create_comment , name="create_comment")
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

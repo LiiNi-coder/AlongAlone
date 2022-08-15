@@ -103,8 +103,9 @@
             </p>
 
             <!-- B : detail_post_img의 src에 게시물 상세 이미지가 와야 함 -->
-            <img class="detail_post_img" src="{{ blog_detail.photo.url }}" alt="">
-
+            {% if blog_detail.photo %}
+                <img class="detail_post_img" src="{{ blog_detail.photo.url }}" alt="">
+            {% endif %}
             <!-- B : 해당 게시물의 장소가 와야 함 -->
             <!-- B : detail_location_col 자식요소인 h4에 주소, h5에 운영시간-->
             <div class="detail_location">
@@ -112,6 +113,18 @@
                 <span class="detail_location_col">
                     <h4>{{ blog_detail.location }}</h4>
                     <h5>9:00 ~ 22:00</h5> <!-- 아직 지도랑 연결 안됌 -->
+
+                    <!-- 댓글 여기-->
+                    <form method="post" action="{% url 'create_comment' blog_detail.id %}">
+                        {%csrf_token%}
+                        {{comment_form}}
+                        <input type="submit">
+                    </form>
+                    
+                    {% for comment in blog_detail.comment_set.all %}
+                    <p>{{comment}}</p>
+                    <hr>
+                    {% endfor %}
                     <!-- popup 생성 해야함!!!!!!!! -->
                 </span>
 
@@ -166,7 +179,7 @@
                 <!-- B : 해당 유저의 다른 게시글을 띄워야 함 -->
                 {% for post in current_posts %} <!-- 3번 반복한다는 뜻-->
                 <div class="another_post">
-                    <span class="another_post_title">{{ post.title }}</span>
+                    <span class="another_post_title"><a href="{% url 'honbabdetail' post.id %}">{{ post.title }}</a></span>
                     </br>
                     <span class="another_post_space">{{ post.location }}</span>
                 </div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Blog
 from django.utils import timezone
-from .forms import BlogModelForm
+from .forms import BlogModelForm, CommentForm
 from accountapp.models import User
 #게시판 메인 화면 관련 함수 (index가 혼밥 게시판)
 def index(request):
@@ -34,7 +34,8 @@ def create(request):
         post.title = request.POST['title']
         post.body = request.POST['body']
         post.category = request.POST['category']
-        post.photo = request.FILES['photo']
+
+        post.photo = request.GET.get(post.photo)    #사진이 있으면 저장하고, 없으면 none
         post.location = request.POST['location']
         post.author = request.user
         post.date = timezone.now()
@@ -142,11 +143,12 @@ def detail(request, blog_id):
 
 def honbabdetail(request, blog_id):
     blog_detail = get_object_or_404(Blog, pk = blog_id) #특정 pk값을 가지는 객체 하나만 가져오기
+    comment_form = CommentForm()
     user_author = get_object_or_404(User, pk = blog_detail.author)
     current_posts = Blog.objects.filter(author = user_author.username).order_by('-date')[:3]
     #posts = Blog.objects.all() #블로그 객체를 모두 가져오는 코드
     #posts =Blog.objects.filter().order_by('-date')   #객체 필터링해서 가져오기 날짜 오름차순(date) 내림차순(-date)
-    return render(request, 'honbabdetail.html', {'blog_detail' : blog_detail, 'user_author' : user_author, 'current_posts' : current_posts} )
+    return render(request, 'honbabdetail.html', {'blog_detail' : blog_detail, 'user_author' : user_author, 'current_posts' : current_posts, 'comment_form':comment_form} )
 
 def honcafedetail(request):
     return render(request, 'honcafedetail.html')
@@ -170,7 +172,14 @@ def honsulmyprofile(request):
 def honnolmyprofile(request):
     return render(request, 'honnolmyprofile.html')
 
-#실험
 
-def hwi(request):
-    return render(request, '휘영detail.html')
+##댓글
+def create_comment(request, blog_id):
+    filled_form = CommentForm(request.POST) #post 요청으로 넘어온 form data들을 CommentForm양식에 담아서 filled_form으로 저장
+
+    if filled_form.is_valid():    
+        finished_form = filled_form.save(commit=False)
+        finished_form.post = get_object_or_404(Blog, pk=blog_id)
+        finished_form.save()
+    
+    return redirect('detail', blog_id) #redirect('애칭', parameter) 해주면 google.com/1 이런식으로 뒤에 붙는 값을 지정해줄수있다.

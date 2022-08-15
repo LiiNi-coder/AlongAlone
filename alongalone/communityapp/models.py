@@ -16,11 +16,12 @@ class Blog(models.Model):
     id = models.BigAutoField(help_text="Post ID", primary_key=True)
     title = models.CharField(max_length=200)
     category = models.CharField(max_length=3, choices = CATEGORY_CHOICES, default = "1") #어떤 게시판에 글을 쓸 것인지 카테고리 선택
-    photo = models.ImageField(blank=True, upload_to ='blog_photo')   #자동으로 media 파일 하에 blog_photo 폴더 생성 및 파일 저장
+    photo = models.ImageField(blank=True, null =True, upload_to ='blog_photo')   #자동으로 media 파일 하에 blog_photo 폴더 생성 및 파일 저장
     body = models.TextField()
     location = models.CharField(max_length=200, null=True)
     date = models.DateTimeField(auto_now_add=True)  #현재 시간을 자동으로 추가.
     author = models.ForeignKey(User, related_name="author", on_delete=models.CASCADE, db_column="author", blank=False)
+    
 
     #category = models.ForeignKey(User, on_delete=models.CASCADE, related_name='category_question')
     #첫번째 인자가 연결할 객체 / CASCADE가 객체가 사라질 경우 같이 사라진다는 뜻.
@@ -28,4 +29,10 @@ class Blog(models.Model):
     def __str__(self):
         return self.title
 
-##게시판 별로 게시글 모델을 따로 만들어야 하나?
+class Comment(models.Model):
+    comment = models.TextField(max_length=200)
+    date = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Blog, null=True, blank=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.comment
