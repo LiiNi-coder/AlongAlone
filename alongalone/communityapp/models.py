@@ -3,17 +3,6 @@ from django.db import models
 # class 새로 만들거나 변경할 때마다 데이터베이스에 반영해줘야 함. ( makemigrations -> migrate 잊지 말기)
 # 장고는 우리가 primary key 지정안하면 id라는 키를 자동으로 만듬.
 
-class Category(models.Model):
-    name = models.CharField(max_length=20, unique=True)
-    description = models.CharField(max_length=200, null=True, blank=True)
-    has_answer = models.BooleanField(default=True)  # 답변가능 여부
-
-    def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('pybo:index', args=[self.name])
-
 class Blog(models.Model):
     CATEGORY_CHOICES = (
 		('1', '혼밥'),
@@ -30,67 +19,9 @@ class Blog(models.Model):
     location = models.CharField(max_length=200, null=True)
     date = models.DateTimeField(auto_now_add=True)  #현재 시간을 자동으로 추가.
     
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category_question')
+    #category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='category_question')
     
     def __str__(self):
         return self.title
 
 ##게시판 별로 게시글 모델을 따로 만들어야 하나?
-
-class HonbabBlog(models.Model):
-    CATEGORY_CHOICES = 
-    ( ('1', '혼밥'), ('2', '혼술'), ('3', '혼카페'), ('4', '혼놀') ) 
-
-    title = models.CharField(max_length=200)
-    category = models.CharField(max_length=3, choices = CATEGORY_CHOICES) 
-    photo = models.ImageField(blank=True, null=True, upload_to ='blog_photo')  
-    body = models.TextField()
-    location = models.CharField(max_length=200, null=True)
-    date = models.DateTimeField(auto_now_add=True) 
-
-    def __str__(self):
-        return self.title
-
-class HonsulBlog(models.Model):
-    CATEGORY_CHOICES = 
-    ( ('1', '혼밥'), ('2', '혼술'), ('3', '혼카페'), ('4', '혼놀') ) 
-
-    title = models.CharField(max_length=200)
-    category = models.CharField(max_length=3, choices = CATEGORY_CHOICES) 
-    photo = models.ImageField(blank=True, null=True, upload_to ='blog_photo')  
-    body = models.TextField()
-    location = models.CharField(max_length=200, null=True)
-    date = models.DateTimeField(auto_now_add=True) 
-
-    def __str__(self):
-        return self.title
-
-class HoncafeBlog(models.Model):
-    CATEGORY_CHOICES = 
-    ( ('1', '혼밥'), ('2', '혼술'), ('3', '혼카페'), ('4', '혼놀') ) 
-
-    title = models.CharField(max_length=200)
-    category = models.CharField(max_length=3, choices = CATEGORY_CHOICES) 
-    photo = models.ImageField(blank=True, null=True, upload_to ='blog_photo')  
-    body = models.TextField()
-    location = models.CharField(max_length=200, null=True)
-    date = models.DateTimeField(auto_now_add=True) 
-
-    def __str__(self):
-        return self.title
-
-class HonnolBlog(models.Model):
-    CATEGORY_CHOICES = 
-    ( ('1', '혼밥'), ('2', '혼술'), ('3', '혼카페'), ('4', '혼놀') ) 
-
-    title = models.CharField(max_length=200)
-    category = models.CharField(max_length=3, choices = CATEGORY_CHOICES) 
-    photo = models.ImageField(blank=True, null=True, upload_to ='blog_photo')  
-    body = models.TextField()
-    location = models.CharField(max_length=200, null=True)
-    date = models.DateTimeField(auto_now_add=True) 
-
-    def __str__(self):
-        return self.title
-
-
