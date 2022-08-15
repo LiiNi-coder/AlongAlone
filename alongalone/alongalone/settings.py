@@ -27,7 +27,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# 외부 어플(pip install ~)은 ""로 표현했다.
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'commentapp',
     'accountapp',
     'communityapp',
+    "imagekit",
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,8 @@ DATABASES = {
     }
 }
 
+#기본 유저 모델을 우리가 커스텀한 모델로 지정
+AUTH_USER_MODEL = "accountapp.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
