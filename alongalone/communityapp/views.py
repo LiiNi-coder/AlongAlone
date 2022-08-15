@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Blog
 from django.utils import timezone
 from .forms import BlogModelForm
-
+from accountapp.models import User
 #게시판 메인 화면 관련 함수 (index가 혼밥 게시판)
 def index(request):
     #posts = Blog.objects.all() #블로그 객체를 모두 가져오는 코드
@@ -35,6 +35,7 @@ def create(request):
         post.body = request.POST['body']
         post.category = request.POST['category']
         post.photo = request.FILES['photo']
+        post.location = request.POST['location']
         post.author = request.user
         post.date = timezone.now()
         
@@ -141,9 +142,11 @@ def detail(request, blog_id):
 
 def honbabdetail(request, blog_id):
     blog_detail = get_object_or_404(Blog, pk = blog_id) #특정 pk값을 가지는 객체 하나만 가져오기
+    user_author = get_object_or_404(User, pk = blog_detail.author)
+    current_posts = Blog.objects.filter(author = user_author.username).order_by('-date')[:3]
     #posts = Blog.objects.all() #블로그 객체를 모두 가져오는 코드
     #posts =Blog.objects.filter().order_by('-date')   #객체 필터링해서 가져오기 날짜 오름차순(date) 내림차순(-date)
-    return render(request, 'honbabdetail.html', {'blog_detail' : blog_detail})
+    return render(request, 'honbabdetail.html', {'blog_detail' : blog_detail, 'user_author' : user_author, 'current_posts' : current_posts} )
 
 def honcafedetail(request):
     return render(request, 'honcafedetail.html')

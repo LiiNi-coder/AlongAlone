@@ -118,9 +118,7 @@
             </div>
 
 
-
-
-            <!-- right content -->
+            <!-- 얼롱인 소개 -->
 
         </div>
 
@@ -144,16 +142,15 @@
                         <img src="" alt="">
                     </div>
                     <div class="user_profile_col">
-                        <div class="user_profile_name">사용자이름</div>
+                        <div class="user_profile_name">{{ user_author.nickname }}</div>
                         <!-- B : 사용자 이름 나오게-->
                         <button class="user_profile_follow">+follow</button>
                     </div>
                 </div>
                 <!-- B : 사용자 짧은 소개글 -->
                 <div class="user_profile_message">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio minima est ex! Dolorum, placeat!
-                    Cumque doloribus, harum et animi tempore velit, eum in ea accusantium, quas accusamus earum porro
-                    officiis!
+                    <!-- 자기소개 부분은 고정적인 크기여야 해서, div태그로 크기 정해줘! -->
+                    {{ user_author.introduction }}
                 </div>
 
                 <!-- support btn -->
@@ -167,7 +164,16 @@
 
                 <h3>수민님의 다른 게시물</h3>
                 <!-- B : 해당 유저의 다른 게시글을 띄워야 함 -->
+                {% for post in current_posts %} <!-- 3번 반복한다는 뜻-->
                 <div class="another_post">
+                    <span class="another_post_title">{{ post.title }}</span>
+                    </br>
+                    <span class="another_post_space">{{ post.location }}</span>
+                </div>
+                {% endfor %}
+                
+
+                {% comment %} <div class="another_post">
                     <span class="another_post_title">게시글 제목</span>
                     <span class="another_post_space">장소</span>
                 </div>
@@ -179,7 +185,7 @@
                 <div class="another_post">
                     <span class="another_post_title">게시글 제목</span>
                     <span class="another_post_space">장소</span>
-                </div>
+                </div> {% endcomment %}
 
                 <!-- 가로 border -->
                 <hr>
