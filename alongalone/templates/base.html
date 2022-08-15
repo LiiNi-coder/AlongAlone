@@ -285,6 +285,7 @@
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                     {%if user.is_authenticated %}
                                         {{user.username}}
+                                        <img src="{{ user.profilePhoto.url }}" alt="{% static "img/default_user.png" %}">
                                     {% else %}
                                         <a href="{% url "login"%}">로그인</a>
                                     {% endif %}
