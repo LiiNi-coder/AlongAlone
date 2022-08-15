@@ -13,9 +13,11 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon.png' %}">
 
     <link rel="stylesheet" href="{% static 'style.css' %}">
+
     {% block detail_style %}
     
     {% endblock %}
+    
     <title>Document</title>
 </head>
 
@@ -97,27 +99,18 @@
 
                 <div class="detailbox_text_wrap">
                     <div class="detailbox_name">김얼롱</div>
-                    <div class="detailbox_content_name">게시글 제목입니다 가나다라마바사</div>
+                    <div class="detailbox_content_name">{{ blog_detail.title }}</div>
                 </div>
             </div>
 
             <div class="detail_content_box">
-                <img class="detail_content_img"></img>
+                {% if blog_detail.phto %}
+                <img class="detail_content_img" src="{{ blog_detail.photo.url }}" height="500"> </img>
+                {% endif %}
                 <div class="detail_content">
                     <h3>게시물 내용</h3>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. enetur
-                        facilis aliquam ullam doloribus saepe sit vitae? Laboriosam earum dolores nihil, exercitationem
-                        nam unde repudiandae consequuntur et.
-
-
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis voluptatum in commodi
-                        voluptates labore quidem possimus molestias rem. Consequuntur fugiat perspiciatis architecto!
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Hic sapiente, numquam quibusdam
-                        Lorem ipsum dolor sit amet consectetur a
-
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque, assumenda optio? Labore,
-                        corrupti quos quae alias, unde ex beatae ipsam iste aliquid iusto, voluptatibus nam blanditiis
-                        non atque nulla accusamus.
+                    <p>
+                        {{ blog_detail.body }}
                     </p>
 
                     <!-- bar -->
@@ -128,7 +121,7 @@
                         <span> <i class="fa-regular fa-comment"></i> 456</span>
                     </div>
 
-                    <span class="detail_days_ago">3일 전</span>
+                    <span class="detail_days_ago">{{ blog_detail.date }}</span>
 
                 </div>
 
@@ -138,8 +131,8 @@
             <div class="detail_location">
                 <span class="detail_location_col"><i class="fa-solid fa-location-dot fa-2x"></i></span>
                 <span class="detail_location_col">
-                    <h4>대구광역시 북구 대학로 24번길</h4>
-                    <h5>9:00 ~ 22:00</h5>
+                    <h4>{{ blog_detail.location }}</h4>
+                    <h5>9:00 ~ 22:00</h5>   <!-- 그 업체 운영 시간 -->
 
                     <!-- popup 생성 하세요!!!!!!!! -->
                     <h3 id="map_popup"> 지도보기<i class="fa-solid fa-chevron-right"></i></h3>
@@ -155,7 +148,7 @@
 
             <!-- first -->
             <div class="popular_box">
-                <h2>얼롱님의 다른 게시물</h2>
+                <h2>인기 게시물</h2>
 
                 <div class="popular_box_col">
                     <h3>게시글 제목</h3>

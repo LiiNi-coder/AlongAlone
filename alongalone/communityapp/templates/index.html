@@ -25,7 +25,7 @@
     <h1>혼밥</h1>
 {% endblock %}
    
-<!-- 게시판 글쓰기 화면 url -->
+<!-- 게시판 글쓰기 화면으로 가는 url -->
 <!-- write html은 하나로 통일해도 될듯 ? 아닌가 각 게시판 따로 써야하나-->
 {% block write %}   
     <a href="{% url 'honbabwrite' %}">
@@ -46,8 +46,8 @@
 
             <div class="honbab_box">
                 
-                <a href="{% url 'honbabdetail' %}">   <!-- box title 누르면 상세 페이지로 (honbabdetail.html) 이동 -->
-                
+                <a href="{% url 'honbabdetail' post.id %}">   <!-- box title 누르면 상세 페이지로 (honbabdetail.html) 이동 -->
+                                                              <!--  post.id는 각 게시물별 id값  -->
                     <div class="box_title">
                             <div class="box_img"></div>
                 

@@ -29,11 +29,12 @@ def new(request):
 
 ##  1. html을 이용한 form 작성 - 블로그 글을 저장해주는 함수
 def create(request):
-    if(request.method == 'POST'):
+    if(request.method == 'POST' or request.method =='FILES'):
         post = Blog()
         post.title = request.POST['title']
         post.body = request.POST['body']
         post.category = request.POST['category']
+        post.photo = request.FILES['photo']
         post.date = timezone.now()
         post.save()
     return redirect('index')
@@ -119,8 +120,11 @@ def detail(request, blog_id):
     #2. blog_id번째 블로그 글을 detail.html로 띄워주는 코드
     return render(request, 'detail.html', {'blog_detail' : blog_detail})
 
-def honbabdetail(request):
-    return render(request, 'honbabdetail.html')
+def honbabdetail(request, blog_id):
+    blog_detail = get_object_or_404(Blog, pk = blog_id) #특정 pk값을 가지는 객체 하나만 가져오기
+    #posts = Blog.objects.all() #블로그 객체를 모두 가져오는 코드
+    #posts =Blog.objects.filter().order_by('-date')   #객체 필터링해서 가져오기 날짜 오름차순(date) 내림차순(-date)
+    return render(request, 'honbabdetail.html', {'blog_detail' : blog_detail})
 
 def honcafedetail(request):
     return render(request, 'honcafedetail.html')
@@ -143,3 +147,8 @@ def honsulmyprofile(request):
 
 def honnolmyprofile(request):
     return render(request, 'honnolmyprofile.html')
+
+#실험
+
+def hwi(request):
+    return render(request, '휘영.html')

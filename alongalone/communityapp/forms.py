@@ -1,7 +1,6 @@
 from django import forms
 from .models import Blog
 
-
 #django modelform (html form / django form은 사용 x)
 class BlogModelForm(forms.ModelForm):
     class Meta:
