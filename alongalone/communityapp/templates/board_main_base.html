@@ -41,7 +41,13 @@
             <a href="{% url 'index' %}">혼밥</a>
             <a href="{% url 'honsul' %}">혼술</a>
             <a href="{% url 'honcafe' %}">혼카페</a>
-            <a href="{% url 'honnol' %}">혼놀</a>
+            <a href="{% url 'logout' %}">로그아웃</a>
+            {% if  user.is_authenticated%}
+                <a href="{% url 'logout' %}">{{ user.nickname }}</a>
+                
+                {% else %}
+                    <a href="">비회원</a>
+            {% endif %}
         </div>
 
         <span class="header-col-bar">

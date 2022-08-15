@@ -35,7 +35,9 @@ def create(request):
         post.body = request.POST['body']
         post.category = request.POST['category']
         post.photo = request.FILES['photo']
+        post.author = request.user
         post.date = timezone.now()
+        
         post.save()
     return redirect('index')
 

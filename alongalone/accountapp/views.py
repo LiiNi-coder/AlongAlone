@@ -2,6 +2,8 @@ from django.shortcuts import redirect, render
 from django.core.files.storage import FileSystemStorage
 from django.contrib import auth
 from .models import User
+from communityapp.models import Blog
+
 def login_login(request):
     if request.method == "GET":
         return render(request, "login.html")
@@ -11,11 +13,12 @@ def login_login(request):
             username=request.POST["id"],
             password=request.POST["pw"]
         )
+        posts =Blog.objects.filter().order_by('-date')
         if user != None:
             auth.login(request, user)
-            return render(request, "index.html", {"user":user})
+            return render(request, "index.html", {"user":user, "posts" : posts})
         else:
-            return render(request, "login.html", {"isLoginFail": True})
+            return render(request, "login.html", {"isLoginFail": True, "posts" : posts})
 def logout(request):
     auth.logout(request)
     return redirect("index")
