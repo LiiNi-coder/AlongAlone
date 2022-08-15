@@ -151,4 +151,4 @@ def honnolmyprofile(request):
 #실험
 
 def hwi(request):
-    return render(request, '휘영.html')
+    return render(request, '휘영detail.html')
