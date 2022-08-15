@@ -43,6 +43,23 @@ def create(request):
 # GET 요청과 (= 입력값을 받을 수 있는 html을 갖다 줘야함)
 # POST 요청 (= 입력한 내용을 데이터베이스에 저장. form에서 입력한 내용을 처리)
 # 둘 다 처리가 가능한 함수 
+
+###html form인데 게시판 별로 글 저장 함수
+def hobabnew(request):
+    return render(request, 'honbabnew.html')
+
+def honbabcreate(request):
+    if(request.method == 'POST' or request.method =='FILES'):
+        post = Blog()
+        post.title = request.POST['title']
+        post.body = request.POST['body']
+        post.category = request.POST['category']
+        post.photo = request.FILES['photo']
+        post.date = timezone.now()
+        post.save()
+    return redirect('index')
+##########3
+
 def formcreate(request):
     # 입력된 데이터 저장
     if request.method == 'POST' or request.method =='FILES':
