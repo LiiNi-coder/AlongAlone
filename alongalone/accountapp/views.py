@@ -37,7 +37,7 @@ def signup_signup(request):
                 nickname=request.POST["nickname"],
                 introduction=request.POST["introduction"],
                 mainCategory=request.POST["mainCategory"],
-                profilePhoto=request.FILES["profilePhoto"]
+                profilePhoto=request.FILES.get("profilePhoto")
             )
             #아래 두줄을 보면 패스워드를 위에 create에서 안받고 따로 메소드를 사용하는 것을 볼 수 있다.
             #위에 create에서 패스워드를 받을때, 유저가 친 패스워드가 허접하면 로그인안되는 예외가 발생한다.

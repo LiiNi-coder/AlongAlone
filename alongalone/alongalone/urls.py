@@ -45,9 +45,6 @@ urlpatterns = [
     ##########################  communityapp 관련 URL  ################################################
     ## 각 게시판의 main 화면 url ##
     path("", communityapp_views.index, name="index"), #기본 메인화면은 혼밥 게시판으로, index.html
-    path("honcafe/", communityapp_views.honcafe, name="honcafe"), 
-    path("honsul/", communityapp_views.honsul, name="honsul"), 
-    path("honnol/", communityapp_views.honnol, name="honnol"), 
 
     ## 각 게시판의 글작성 화면 url ##
         # html form 을 이용해 블로그 객체 만들기 #
@@ -64,16 +61,10 @@ urlpatterns = [
     #path('/honbabdetail/', communityapp_views.honbabdetail, name='honbabdetail'), 
     path('honbabdetail/<int:blog_id>', communityapp_views.honbabdetail, name = 'honbabdetail'),
 
-    path('/honcafedetail/', communityapp_views.honcafedetail, name='honcafedetail'), 
-    path('/honsuldetail/', communityapp_views.honsuldetail, name='honsuldetail'), 
-    path('/honnoldetail/', communityapp_views.honnoldetail, name='honnoldetail'), 
-    
+ 
     ## 각 게시판과 연동되는 프로필 페이지 url (아직 미구현)
     path("honbabmyprofile/", communityapp_views.honbabmyprofile, name="honbabmyprofile"),
-    path("honcafemyprofile/", communityapp_views.honcafemyprofile, name="honcafemyprofile"),
-    path("honsulmyprofile/", communityapp_views.honsulmyprofile, name="honsulmyprofile"),
-    path("honnolmyprofile/", communityapp_views.honnolmyprofile, name="honnolmyprofile"),
-   
+  
     #commentapp 관련 URL
     path('create_comment/<int:blog_id>', communityapp_views.create_comment , name="create_comment"),
 
