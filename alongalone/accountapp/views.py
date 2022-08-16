@@ -13,7 +13,7 @@ def login_login(request):
             username=request.POST["id"],
             password=request.POST["pw"]
         )
-        posts =Blog.objects.filter().order_by('-date')
+        posts=Blog.objects.filter().order_by('-date')
         if user != None:
             auth.login(request, user)
             return render(request, "index.html", {"user":user, "posts" : posts})
@@ -47,4 +47,5 @@ def signup_signup(request):
             return redirect("login")
         else:
             return render(request, "signup.html", {"isPasswordDiffer": True})
-        
+    
+
