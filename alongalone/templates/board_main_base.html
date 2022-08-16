@@ -5,14 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main화면</title>
+    <title>
+        {% block title %}
+            <!-- 여기에 각 페이지마다 주소창 제목이 들어감. -->
+        {% endblock %}
+    </title>
 
     <!-- favicon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon.png">
 
-    <!-- 주의! 이 아래에 각 html마다 별도의 css가 추가될때가 있음. 맨 앞에 주석에 달아놓을거임 -->
     <link rel="stylesheet" href="/static/css/style.css">
     
+   
+    {% block css %}
+         <!-- 주의! 이 아래에 각 html마다 별도의 css가 추가될때가 있음. 맨 앞에 주석에 달아놓을거임 -->
+    {% endblock %}
  
 </head>
 <body>
@@ -50,12 +57,12 @@
     </header>
 
 
-<!--
-    여기 부분이 각파일마다 다른부분
--->
-
+{% block body %}
+    <!-- 이 부분에 각 페이지마다 기능들이 들어감. -->
+{% endblock %}
 
 
     <!--  icon 적용 -->
     <script src="https://kit.fontawesome.com/73b35ca8d6.js" crossorigin="anonymous"></script>
 </body>
+</html>

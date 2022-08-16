@@ -38,7 +38,37 @@ urlpatterns = [
     path("signup/", accountapp_views.signup_signup, name="signup"),
 
     #communityapp 관련 URL
+    path("", communityapp_views.index, name="index"), #기본 메인화면은 혼밥 게시판으로, index.html
+
+    ## 각 게시판의 글작성 화면 url ##
+        # html form 을 이용해 블로그 객체 만들기 #
+    path('new/', communityapp_views.new, name='new'),
+    path('create/', communityapp_views.create, name='create'),
+
+        # 각 게시판 글쓰기 url #
+    path("honbabwrite/", communityapp_views.honbabwrite, name="honbabwrite"),
     
+    ## 각 게시글들의 상세 페이지 url (아직 미구현)
+    #path('detail/<int:blog_id>', communityapp_views.detail, name='detail'),  # 예시 - 이렇게 id값 명시
+   
+    #path('/honbabdetail/', communityapp_views.honbabdetail, name='honbabdetail'), 
+    path('honbabdetail/<int:blog_id>', communityapp_views.honbabdetail, name = 'honbabdetail'),
+
+    path('/honcafedetail/', communityapp_views.honcafedetail, name='honcafedetail'), 
+    path('/honsuldetail/', communityapp_views.honsuldetail, name='honsuldetail'), 
+    path('/honnoldetail/', communityapp_views.honnoldetail, name='honnoldetail'), 
+    
+    ## 각 게시판과 연동되는 프로필 페이지 url (아직 미구현)
+    path("honbabmyprofile/", communityapp_views.honbabmyprofile, name="honbabmyprofile"),
+    path("honcafemyprofile/", communityapp_views.honcafemyprofile, name="honcafemyprofile"),
+    path("honsulmyprofile/", communityapp_views.honsulmyprofile, name="honsulmyprofile"),
+    path("honnolmyprofile/", communityapp_views.honnolmyprofile, name="honnolmyprofile"),
+    
+    ##########################  communityapp 관련 URL  ################################################
+
+
+    #commentapp 관련 URL
+    path('create_comment/<int:blog_id>', communityapp_views.create_comment , name="create_comment"),
 
     #commentapp 관련 URL
     
