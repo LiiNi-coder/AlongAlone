@@ -1,10 +1,8 @@
-<!-- board_write_base.html을 상속하고, 그 파일과 공통되지 않는 부분들만 여기 명시 -->
-
-{% extends 'board_write_base.html' %}
+{% extends 'board_base.html' %}
 
 <!-- 주소창에 뜰 title -->
 {% block write_title %}
-    <title>혼밥 게시판</title>
+    <title>혼밥 글쓰기</title>
 {% endblock %}
 
 <!-- 프로필로 넘어가기 -->
@@ -14,84 +12,105 @@
     </a>
 {% endblock %}
 
-<!-- 글쓰기 게시판 선택(게시판 마다 기본 게시판 설정 다름) -->
-<!-- {% block write_category_select %}
-    <form action="" method="GET">
-        <select id="check_box">
-            <option value="">혼밥</option>
-            <option value="">혼술</option>
-            <option value="">혼놀</option>
-            <option value="">혼카페</option>
-        </select>
-    </form>
-{% endblock %} -->
-
 <!-- 각 게시판마다 다른 css(배경 색상 등) -->
-{% block write_css %}
-<!-- css -->
-<style>
-    body {
-        background-color: black
-    }
+{% block board_css %}
+    <style>
+        body {
+            background-color: black
+        }
 
-    /* title */
+        /* title */
 
-    .boardTitle {
-        display: flex;
-        flex-direction: column;
-        width: 400px;
-        height: 70px;
-        margin-top: 100px;
-        margin-left: 90px;
-        color: var(--mint);
-    }
+        .boardTitle {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: 70px;
+            margin-top: 100px;
+            margin-left: 90px;
+            color: var(--mint);
+        }
 
-    .boardTitle h1 {
-        margin: 10px;
-        font-size: 30px;
-        font-weight: 600;
-        color: var(--mint);
-    }
+        .boardTitle h1 {
+            margin: 10px;
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--mint);
+        }
 
-    .boardTitle form {
-        position: relative;
-        ;
-    }
+        .boardTitle form {
+            position: relative;
+            ;
+        }
 
-    #check_box {
-        width: 150px;
-        padding: 5px;
-        background-color: var(--mint);
-        border-radius: 5px;
-        border: none;
-        position: absolute;
-        left: 10px;
-    }
+        #check_box {
+            width: 150px;
+            padding: 5px;
+            background-color: var(--mint);
+            border-radius: 5px;
+            border: none;
+            position: absolute;
+            left: 10px;
+        }
 
-    /* board */
+        /* board */
 
-    #board {
-        border-radius: 20px;
-        margin: 30px 100px;
-        background-color: aliceblue;
-    }
+        #board {
+            border-radius: 20px;
+            margin: 30px 100px;
+            background-color: aliceblue;
+        }
 
-    #board_btn {
-        height: 50px;
-        text-align: center;
-        font-size: 20px;
-        background-color: var(--mint);
-        color: rgba(0, 0, 0, 0.4);
-        font-weight: 500;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+        #board_btn {
+            height: 50px;
+            text-align: center;
+            font-size: 20px;
+            background-color: var(--mint);
+            color: rgba(0, 0, 0, 0.4);
+            font-weight: 500;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    #board_btn:hover {
-        background-color: rgba(3, 113, 3, 0.324);
-        color: white;
-    }
-</style>
+        #board_btn:hover {
+            background-color: rgba(3, 113, 3, 0.324);
+            color: white;
+        }
+    </style>
+{% endblock %}
 
+{% block content %}
+    <!-- 글쓰기 화면 -->
+    <div class="container" style="margin-top: 200px;">
+        <h2 style="color: white;">혼밥 게시판 글쓰기</h2> <br>
+        <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">    <!--  url은 제출버튼 누르면 저 함수 실행하는 url -->
+            {% csrf_token %}    <!-- 보안관련임. 무시해도 됌 -->
+
+                <!-- <form action="write.jsp" method="post"> -->
+                <div class="form-group">
+                    <label for="title" style="color: white;">제목</label>
+                    <input type="text" class="form-control" id="title" placeholder="제목 입력(4-100)" name="title" maxlength="100"
+                        required="required" pattern=".{4,100}"> <!-- 제목 -->
+                    <input type="file"  name ="photo" > <!-- 사진 -->
+                    <label for="location" style="color: white;" >장소 입력</label>
+                    <input type="text" class="form-control" id="location" placeholder="장소 입력(1글자 이상)" name="location" maxlength="100"
+                        required="required" pattern=".{1,100}"> <!-- 장소 -->
+               
+                    <select name="category" id="catetgory" style="color : black;"> 
+                        <option value="1">혼밥</option>
+                        <option value="2">혼술</option>
+                        <option value="3">혼카페</option>
+                        <option value="4">혼놀</option>
+                    </select>    
+                </div>
+
+                <div class="form-group">
+                    <label for="body" style="color: white;">내용</label> 
+                    <textarea class="form-control" rows="5" id="body" name="body" placeholder="내용 작성"></textarea>
+                </div>  <!-- 본문 -->
+
+                <button type="submit" class="btn btn-default">등록</button>
+        </form>
+    </div>
 {% endblock %}
