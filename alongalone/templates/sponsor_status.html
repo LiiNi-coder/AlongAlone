@@ -1,59 +1,13 @@
-<!--이 파일에선 base.html에 없는 줄이 15,16줄임!!!!!!!!!!!!!!!!!!!!!!-->
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- css -->
-    <link rel="stylesheet" href="static/css/style.css">
-    <!-- favicon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon.png">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/screen/sponsor/sponsor.css">
-    <link rel="stylesheet" href="/static/css/screen/sponsor/honbab_.css">
+{% extends "base.html" %}
+{% block title %}sponsor_status{% endblock title %}
+{% block css %}
+   <link rel="stylesheet" href="/static/css/screen/sponsor/sponsor.css">
+   <link rel="stylesheet" href="/static/css/screen/sponsor/honbab_.css">
+{% endblock css %}
     
-    <title>sponsor_status</title>
-</head>
-
-<body>
-    <!-- header -->
-    <header>
-    
-        <a class="header-col" href="index.html">
-            <div class="header-col1">
-                <img class="header-logo" src="img/logowhite.PNG">
-                <div class="header-title">
-                    <span>alone</span>
-                    <span>along</span>
-                </div>
-    
-            </div>
-        </a>
-    
-        <div class="header-col2">
-            <a href="index.html">혼밥</a>
-            <a href="honsul.html">혼술</a>
-            <a href="/html/home/honcafe.html">혼카페</a>
-            <a href="honmap.html">혼맵</a>
-        </div>
-    
-        <span class="header-col-bar">
-    
-            <img src="img/saessak.png" alt="">
-            <img src="img/alarm.png" alt="">
-            <a href="#">
-                <div id="mypage"><i class="fa-solid fa-user fa-lg"></i></div>
-            </a>
-        </span>
-    
-    
-    </header>
-
-    <!-- 검은색 배경 네모 -->
-    <div class="content_wrap">
+{% block body %}
+<!-- 검은색 배경 네모 -->
+<div class="content_wrap">
     <div class="content">
         <h1>나의 이용 정보</h1>
         <div class="howmany">
@@ -61,17 +15,15 @@
             <!-- !!백에 넘겨주고나서 html 수정한 부분 (1) div 클래스 textbox 추가 -->
             <div class="textbox">
                 <p>보유 중인 새싹</p>
-            <!-- B : 보유 중인 새싹 계산 -->
-            <p style="color:rgba(204, 249, 197, 1)">10잎</p>
-            <button>충전하기</button>
+                <!-- B : 보유 중인 새싹 계산 -->
+                <p style="color:rgba(204, 249, 197, 1)">{{user.cash}}잎</p>
             </div>
-            
         </div>
 
         <div class="category">
             <!-- !!백에 넘겨주고나서 html 수정한 부분 (2) a 태그 안에 연결 링크 추가 -->
-            <a href="/sponsor_status.html">후원현황</a>
-            <a href="/sponsor.html">충전하기</a><br>
+            <a>후원현황</a>
+            <a href="{% url 'sponsor' %}">충전하기</a><br>
         </div>
         <hr>
 
@@ -86,10 +38,4 @@
 
     </div>
 </div>
-    
-
-    <!-- icon link -->
-    <script src="https://kit.fontawesome.com/73b35ca8d6.js" crossorigin="anonymous"></script>
-</body>
-
-</html>
+{% endblock body %}

@@ -30,26 +30,69 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     #alongapp 관련 URL
+    #path("", views.index, name="index"),
     path("map/", views.map, name="map"),
-
+        #alongapp에서 후원관련 URL
+    path("donate_detailpost/<int:blog_id>", views.donate, name="donate"),
+    path("sponsor_status/", views.sponsor_status, name="sponsor_status"),
+    path("sponsor/", views.sponsor, name="sponsor"),
+    path("charge/<int:money>", views.charge, name="charge"),
     #accountapp 관련 URL
     path("login/", accountapp_views.login_login, name="login"),
     path("logout/", accountapp_views.logout, name="logout"),
     path("signup/", accountapp_views.signup_signup, name="signup"),
 
-    #communityapp 관련 URL
+    ##########################  communityapp 관련 URL  ################################################
+    ## 각 게시판의 main 화면 url ##
+    path("", communityapp_views.index, name="index"), #기본 메인화면은 혼밥 게시판으로, index.html
+    path("honcafe/", communityapp_views.honcafe, name="honcafe"), 
+    path("honsul/", communityapp_views.honsul, name="honsul"), 
+    path("honnol/", communityapp_views.honnol, name="honnol"), 
+
+    ## 각 게시판의 글작성 화면 url ##
+        # html form 을 이용해 블로그 객체 만들기 #
+    path('new/', communityapp_views.new, name='new'),
+    path('create/', communityapp_views.create, name='create'),
+
+        # 각 게시판 글쓰기 url #
+    path("honbabwrite/", communityapp_views.honbabwrite, name="honbabwrite"),
+    path("honsulwrite/", communityapp_views.honsulwrite, name="honsulwrite"),
+    path("honnolwrite/", communityapp_views.honnolwrite, name="honnolwrite"),
+    path("honcafewrite/", communityapp_views.honcafewrite, name="honcafewrite"),
     
+    ## 각 게시글들의 상세 페이지 url (아직 미구현)
+    #path('detail/<int:blog_id>', communityapp_views.detail, name='detail'),  # 예시 - 이렇게 id값 명시
+   
+    #path('/honbabdetail/', communityapp_views.honbabdetail, name='honbabdetail'), 
+    path('honbabdetail/<int:blog_id>', communityapp_views.honbabdetail, name = 'honbabdetail'),
+
+    path('/honcafedetail/', communityapp_views.honcafedetail, name='honcafedetail'), 
+    path('/honsuldetail/', communityapp_views.honsuldetail, name='honsuldetail'), 
+    path('/honnoldetail/', communityapp_views.honnoldetail, name='honnoldetail'), 
+    
+    ## 각 게시판과 연동되는 프로필 페이지 url (아직 미구현)
+    path("honbabmyprofile/", communityapp_views.honbabmyprofile, name="honbabmyprofile"),
+    path("honcafemyprofile/", communityapp_views.honcafemyprofile, name="honcafemyprofile"),
+    path("honsulmyprofile/", communityapp_views.honsulmyprofile, name="honsulmyprofile"),
+    path("honnolmyprofile/", communityapp_views.honnolmyprofile, name="honnolmyprofile"),
+    
+    ##########################  communityapp 관련 URL  ################################################
+
 
     #commentapp 관련 URL
-    
+    path('create_comment/<int:blog_id>', communityapp_views.create_comment , name="create_comment"),
 
-    #프론트에서 가져온거 확인용 임시 URL
+
+
+
+
+    #############프론트에서 가져온거 확인용 임시 URL
     path("base/", views.base, name="base"),
     path("detailpost/", views.detailpost, name="detailpost"),
     path("map_popup/", views.map_popup, name="map_popup"),
+    path("myprofile_fin/", views.myprofile_fin, name="myprofile_fin"),
     path("saessakcount/", views.saessakcount, name="saessakcount"),
     path("sponsor_status/", views.sponsor_status, name="sponsor_status"),
-    path("sponsor/", views.sponsor, name="sponsor"),
+    #path("sponsor/", views.sponsor, name="sponsor"),
     path("write_back/", views.write_back, name="write_back"),
-
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

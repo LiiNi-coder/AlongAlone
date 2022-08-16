@@ -1,3 +1,8 @@
+<!--block은 총 3개
+1. title -> 인터넷제목
+2. css -> 각기 다른 css필요할때
+3. body -> 메인컨텐츠
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,15 +10,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main화면</title>
+    <title>{% block title %}{% endblock title %}</title>
 
     <!-- favicon -->
     <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon.png">
 
     <!-- 주의! 이 아래에 각 html마다 별도의 css가 추가될때가 있음. 맨 앞에 주석에 달아놓을거임 -->
     <link rel="stylesheet" href="/static/css/style.css">
-    
- 
+    {% block css %}
+    {% endblock css %}
 </head>
 <body>
     <!-- header -->
@@ -45,17 +50,9 @@
                 <div id="mypage"><i class="fa-solid fa-user fa-lg"></i></div>
             </a>
         </span>
-    
-    
     </header>
-
-
-<!--
-    여기 부분이 각파일마다 다른부분
--->
-
-
-
+    {% block body %}
+    {% endblock body %}
     <!--  icon 적용 -->
     <script src="https://kit.fontawesome.com/73b35ca8d6.js" crossorigin="anonymous"></script>
 </body>
