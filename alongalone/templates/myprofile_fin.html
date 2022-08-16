@@ -1,0 +1,124 @@
+<!--이 파일에선 base.html에 없는 줄이 15줄임!!!!!!!!!!!!!!!!!!!!!!-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypage</title>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+HK&display=swap" rel="stylesheet" />
+    <!-- favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon.png">
+    
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/screen/myprofile/myprofile.css">
+</head>
+
+<body>
+    <header>
+
+        <a href="/templates/index.html">
+            <div class="header-col">
+                <img class="header-logo" src="/static/img/logo.png">
+                <div class="header-title">
+                    <span>along</span>
+                    <span>alone</span>
+                </div>
+
+            </div>
+        </a>
+        <div class="header-col">
+            <a class="green" href="/templates/index.html">혼밥</a>
+            <a class="pink" href="/honsul.html">혼술</a>
+            <a class="blue" href="/honcafe.html">혼카페</a>
+            <a class="yellow" href="/honnol.html">혼놀</a>
+        </div>
+
+        <span class="header-col-bar">
+            <div class="header-bar"></div>
+            <input class="header-bar-search" type="text">
+
+            <img src="/img/scrap.png" alt="">
+            <img src="/img/alarm.png" alt="">
+            <span id="mypage"></span>
+        </span>
+
+
+    </header>
+
+    <div class="content">
+        <!-- 내 프로필 -->
+        <div class="profile">
+
+            <!-- 프로필 사진 -->
+            <div class="profile_left">
+                <!-- B : 사용자 사진 -->
+                <div class="profile_bg green">
+                    <span class="profile_img"></span>
+                </div>
+            </div>
+
+            <!-- 개인 정보 -->
+            <div class="profile_right">
+                <div class="profile_right_float">
+                    <div class="profile_right_left">
+                        <!-- B : 사용자 이름 -->
+                        <div class="name">김얼롱</div>
+                    </div>
+
+                    <div class="profile_right_right">
+                        <button class="follow_button green" type="button">팔로우</button>
+                    </div>
+                </div>
+                <br><br><br><br>
+                <div class="details_">
+                    <!-- B : 사용자 자기 소개 -->
+                    <div class="info">안녕하세요<br>
+                        혼밥을 좋아하는 김얼롱입니다😃</div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <br>
+
+        <!-- 카테고리 -->
+        <div class="category">
+            <div class="category right">
+                <!-- 게시물 내 카테고리 (혼밥, 혼술, 혼카페) -->
+                <div class="category details">
+                    <a href="#" class="info2" style="border-bottom: 2px solid white;">혼밥</a>
+                    <a href="#" class="info2">혼술</a>
+                    <a href="#" class="info2">혼카페</a>
+                    <a href="#" class="info2">전체보기</a>
+                </div>
+            </div>
+        </div>
+
+        <br>
+        <hr style="width: 1050px; text-align: center; margin-top: 0;">
+
+        <!--  게시물  -->
+        <div class="posts">
+            <div class="post_row">
+                <!-- B : 게시물 사진 들어갈 곳
+                    카테고리별로 다른 사진 보여주기
+                 -->
+                <div class="post green">1</div>
+                <div class="post green">2</div>
+                <div class="post green">3</div>
+            </div>
+            <br>
+            <div class="post_row">
+                <div class="post green">4</div>
+                <div class="post green">5</div>
+                <div class="post green">6</div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>

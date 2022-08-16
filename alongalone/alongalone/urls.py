@@ -76,6 +76,18 @@ urlpatterns = [
 
 
     #commentapp 관련 URL
-    path('create_comment/<int:blog_id>', communityapp_views.create_comment , name="create_comment")
+    path('create_comment/<int:blog_id>', communityapp_views.create_comment , name="create_comment"),
 
+
+
+
+
+    #############프론트에서 가져온거 확인용 임시 URL
+    path("base/", views.base, name="base"),
+    path("detailpost/", views.detailpost, name="detailpost"),
+    path("map_popup/", views.map_popup, name="map_popup"),
+    path("saessakcount/", views.saessakcount, name="saessakcount"),
+    path("sponsor_status/", views.sponsor_status, name="sponsor_status"),
+    path("sponsor/", views.sponsor, name="sponsor"),
+    path("write_back/", views.write_back, name="write_back"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
