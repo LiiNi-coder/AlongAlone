@@ -1,16 +1,11 @@
 from django.shortcuts import redirect, render
+from communityapp.views import honbabdetail
 """뷰의 이름 규칙
 그냥 렌더를 위한 단순 뷰면은 해당 html의 이름으로 정함
 렌더말고도 다른 기능이 있으면 "기능_html이름"으로 짓는다.
 """
 def index(request):
     return render(request, "index.html")
-
-def donate(request, blog_id):
-    if request.user.is_authenticated:
-        pass
-    else:
-        pass
 
 def map(request):
     pass
@@ -32,6 +27,19 @@ def charge(request, money):
     user.cash += money
     user.save()
     return render(request, "sponsor.html")
+
+def donate(request, blog_id):
+    money_donate = int(request.POST["money"])
+    if request.user.cash < money_donate:
+        #돈부족
+        return render(request, "sponsor.html")
+    else:
+        #돈충분
+        user = request.user
+        user.cash -= money_donate
+        user.save()
+        return honbabdetail(request, blog_id)
+
 
 ########프론트엔드 파일을 가져온거 디버깅용 임시 뷰
 def base(request):

@@ -36,7 +36,8 @@
             <span class="detail_location_col">
                 <h4>{{ blog_detail.location }}</h4>
                 <h5>9:00 ~ 22:00</h5> <!-- 아직 지도랑 연결 안됌 -->
-
+                <a href="{% url 'honbabdetail_update' blog_detail.id %}">수정</a>
+                <a href="{% url 'honbabdetail_delete' blog_detail.id %}">삭제하기</a>
                 <!-- 댓글 여기-->
                 <form method="post" action="{% url 'create_comment' blog_detail.id %}">
                     {%csrf_token%}
@@ -96,7 +97,7 @@
             <!-- 가로 border -->
             <hr>
 
-            <h3>수민님의 다른 게시물</h3>
+            <h3>{{user_author.nickname}}님의 다른 게시물</h3>
             <!-- B : 해당 유저의 다른 게시글을 띄워야 함 -->
             {% for post in current_posts %} <!-- 3번 반복함!! -->
             <div class="another_post">
@@ -133,12 +134,22 @@
 
 
                 <h4>추가 후원금 (선택) </h4>
-                <input type="number">
-
-                <button>+1천원</button>
-                <button>+5천원</button>
-                <button>+1만원</button>
-                <button>후원하기</button>
+                <input id="moneyTextBox" type="number" value="0">
+                <script>
+                    function buttonclick_add(money){
+                        var element=document.getElementById("moneyTextBox");
+                        element.value=Number(element.value) + Number(money);
+                    }
+                </script>
+                <button onclick="buttonclick_add(1000);">+1천원</button>
+                <button onclick="buttonclick_add(5000);">+5천원</button>
+                <button onclick="buttonclick_add(10000);">+1만원</button>
+                <script>
+                    function buttonclick_displaymoney(){
+                        document.getElemenetById("money").innerText = 500+Number(document.getElementById("moneyTextBox").value));}
+                </script>
+                <button onclick="buttonclick_displaymoney();">후원하기</button>
+                </form>
             </div>
 
             <!-- 후원 팝업 관련 -->
@@ -149,17 +160,20 @@
                 <div class="content">
                     <!-- B : 보유새싹 계산 -->
                     <div class="how_much">
-                        내 보유새싹 : 10잎
+                        내 보유새싹 : {{user.cash}}잎
                     </div><br>
-                    <div class="details">
-                        <!-- B : 사용한 새싹 계산 -->
-                        <div class="used">새싹 5잎을 사용하여</div><br>
-                        <!-- B : 게시글 제목 가져오기 -->
-                        <div class="title">수성구 상무초밥 혼밥후기</div><br>
-                        <div class="used">콘텐츠를 후원합니다.</div><br>
-                    </div>
-                    <button>취소</button>
-                    <button>확인</button>
+                    <form action="{% url "donate" blog_detail.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="details">
+                            <!-- B : 사용한 새싹 계산 -->
+                                <div class="used">새싹 <p name="money" id="money"></p>잎을 사용하여</div><br>
+                                <!-- B : 게시글 제목 가져오기 -->
+                                <div class="title">{{blog_detail.title}}</div><br>
+                                <div class="used">콘텐츠를 후원합니다.</div><br>
+                        </div>
+                        <button>취소</button>
+                        <button type=submit>확인</button>
+                    </form>
                 </div>
 
 

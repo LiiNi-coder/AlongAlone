@@ -107,6 +107,29 @@ def honbabdetail(request, blog_id):
     #posts =Blog.objects.filter().order_by('-date')   #객체 필터링해서 가져오기 날짜 오름차순(date) 내림차순(-date)
     return render(request, 'honbabdetail.html', {'blog_detail' : blog_detail, 'user_author' : user_author, 'current_posts' : current_posts, 'comment_form':comment_form} )
 
+def honbabdetail_delete(request, blog_id):
+    post = Blog.objects.get(pk = blog_id)
+    post.delete()
+    return redirect('index')
+
+
+
+def honbabdetail_update(request, blog_id):
+  post = Blog.objects.get(id=blog_id)
+  if request.method == "POST" or request.method == "FILES":
+    post.title = request.POST['title']
+    post.body = request.POST['body']
+    post.date = timezone.now()
+    try:
+      post.image = request.FILES['photo']
+    except:
+      post.image = None
+    post.save()
+    return redirect('index')
+  else:
+    post=Blog()
+    return render(request, 'update.html', {'post':post})
+
 
 #프로필 함수
 def honbabmyprofile(request):

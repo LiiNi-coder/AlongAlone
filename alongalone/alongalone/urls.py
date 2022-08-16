@@ -37,6 +37,7 @@ urlpatterns = [
     path("sponsor_status/", views.sponsor_status, name="sponsor_status"),
     path("sponsor/", views.sponsor, name="sponsor"),
     path("charge/<int:money>", views.charge, name="charge"),
+    path("donate/<int:blog_id>", views.donate, name="donate"),
     #accountapp 관련 URL
     path("login/", accountapp_views.login_login, name="login"),
     path("logout/", accountapp_views.logout, name="logout"),
@@ -60,7 +61,8 @@ urlpatterns = [
    
     #path('/honbabdetail/', communityapp_views.honbabdetail, name='honbabdetail'), 
     path('honbabdetail/<int:blog_id>', communityapp_views.honbabdetail, name = 'honbabdetail'),
-
+    path('honbabdetail/<int:blog_id>/delete', communityapp_views.honbabdetail_delete, name = 'honbabdetail_delete'),
+    path('honbabdetail/<int:blog_id>/update', communityapp_views.honbabdetail_update, name = 'honbabdetail_update'),
  
     ## 각 게시판과 연동되는 프로필 페이지 url (아직 미구현)
     path("honbabmyprofile/", communityapp_views.honbabmyprofile, name="honbabmyprofile"),
