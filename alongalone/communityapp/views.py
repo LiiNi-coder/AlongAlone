@@ -35,7 +35,7 @@ def create(request):
         post.body = request.POST['body']
         post.category = request.POST['category']
 
-        post.photo = request.GET.get(post.photo)    #사진이 있으면 저장하고, 없으면 none
+        post.photo = request.FILES.get('photo')    #사진이 있으면 저장하고, 없으면 none
         post.location = request.POST['location']
         post.author = request.user
         post.date = timezone.now()
@@ -182,4 +182,4 @@ def create_comment(request, blog_id):
         finished_form.post = get_object_or_404(Blog, pk=blog_id)
         finished_form.save()
     
-    return redirect('detail', blog_id) #redirect('애칭', parameter) 해주면 google.com/1 이런식으로 뒤에 붙는 값을 지정해줄수있다.
+    return redirect('honbabdetail', blog_id) #redirect('애칭', parameter) 해주면 google.com/1 이런식으로 뒤에 붙는 값을 지정해줄수있다.
