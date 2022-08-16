@@ -56,9 +56,7 @@ urlpatterns = [
 
         # 각 게시판 글쓰기 url #
     path("honbabwrite/", communityapp_views.honbabwrite, name="honbabwrite"),
-    path("honsulwrite/", communityapp_views.honsulwrite, name="honsulwrite"),
-    path("honnolwrite/", communityapp_views.honnolwrite, name="honnolwrite"),
-    path("honcafewrite/", communityapp_views.honcafewrite, name="honcafewrite"),
+
     
     ## 각 게시글들의 상세 페이지 url (아직 미구현)
     #path('detail/<int:blog_id>', communityapp_views.detail, name='detail'),  # 예시 - 이렇게 id값 명시
@@ -75,10 +73,7 @@ urlpatterns = [
     path("honcafemyprofile/", communityapp_views.honcafemyprofile, name="honcafemyprofile"),
     path("honsulmyprofile/", communityapp_views.honsulmyprofile, name="honsulmyprofile"),
     path("honnolmyprofile/", communityapp_views.honnolmyprofile, name="honnolmyprofile"),
-    
-    ##########################  communityapp 관련 URL  ################################################
-
-
+   
     #commentapp 관련 URL
     path('create_comment/<int:blog_id>', communityapp_views.create_comment , name="create_comment"),
 

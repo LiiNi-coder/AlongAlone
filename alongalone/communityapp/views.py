@@ -64,21 +64,6 @@ def honbabcreate(request):
     return redirect('index')
 ##########3
 
-def formcreate(request):
-    # 입력된 데이터 저장
-    if request.method == 'POST' or request.method =='FILES':
-        form = BlogForm(request.POST, request.FILES)
-        if form.is_valid():
-            post = Blog()
-            post.title = form.cleaned_data['title']
-            post.body = form.cleaned_data['body']
-            post.category = form.cleaned_data['category']
-            post.photo = request.FILES["photo"]
-            post.save()
-            return redirect('index')
-    else:
-        form = BlogForm()
-    return render(request, 'board_write_base.html', {'form':form})
 
 
 ## 3.django modelform을 이용해서 입력값을 받는 함수(새 글 생성하기 눌렀을 때 함수)
@@ -101,35 +86,7 @@ def honbabwrite(request):
         context['form'] = BlogModelForm()
     return render(request, 'honbabwrite.html', context) 
 
-def honsulwrite(request):
-    if request.method == 'POST' or request.method == 'FILES':
-        form = BlogModelForm(request.POST, request.FILES)
-        if form.is_valid(): 
-            form.save()
-            return redirect('honsul')
-    else:
-        form = BlogModelForm()
-    return render(request, 'honsulwrite.html', {'form' : form}) 
 
-def honnolwrite(request):
-    if request.method == 'POST' or request.method == 'FILES':
-        form = BlogModelForm(request.POST, request.FILES)
-        if form.is_valid(): 
-            form.save()
-            return redirect('honnol')
-    else:
-        form = BlogModelForm()
-    return render(request, 'honnolwrite.html', {'form' : form}) 
-
-def honcafewrite(request):
-    if request.method == 'POST' or request.method == 'FILES':
-        form = BlogModelForm(request.POST, request.FILES)
-        if form.is_valid(): 
-            form.save()
-            return redirect('honcafe')
-    else:
-        form = BlogModelForm()
-    return render(request, 'honcafewrite.html', {'form' : form}) 
 
 #상세페이지 함수
 def detail(request, blog_id):
@@ -150,28 +107,10 @@ def honbabdetail(request, blog_id):
     #posts =Blog.objects.filter().order_by('-date')   #객체 필터링해서 가져오기 날짜 오름차순(date) 내림차순(-date)
     return render(request, 'honbabdetail.html', {'blog_detail' : blog_detail, 'user_author' : user_author, 'current_posts' : current_posts, 'comment_form':comment_form} )
 
-def honcafedetail(request):
-    return render(request, 'honcafedetail.html')
-
-def honsuldetail(request):
-    return render(request, 'honsuldetail.html')
-
-def honnoldetail(request):
-    return render(request, 'honnoldetail.html')
 
 #프로필 함수
 def honbabmyprofile(request):
     return render(request, 'honbabmyprofile.html')
-
-def honcafemyprofile(request):
-    return render(request, 'honcafemyprofile.html')
-
-def honsulmyprofile(request):
-    return render(request, 'honsulmyprofile.html')
-
-def honnolmyprofile(request):
-    return render(request, 'honnolmyprofile.html')
-
 
 ##댓글
 def create_comment(request, blog_id):
