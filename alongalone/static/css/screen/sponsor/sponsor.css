@@ -1,0 +1,232 @@
+
+.content_wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.content {
+    width: 1055px;
+    height: 814px;
+    background-color: rgba(243, 252, 241, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin: 150px 209px 0 248px;
+}
+
+.content h1 {
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 22px;
+    letter-spacing: 0.1em;
+
+    color: #FFFFFF;
+    margin: 43px 0 36px 33px;
+    opacity: 0.33;
+}
+
+.howmany {
+    width: 500px;
+    height: 88px;
+    box-sizing: border-box;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: block;
+    margin: 0 0 0 26px;
+
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 22px;
+
+    letter-spacing: 0.1em;
+    padding: 15px 16px;
+
+    align-items: center;
+    margin: 0 0 62px 26px;
+}
+
+.textbox {
+    padding: 18px 0;
+}
+
+.textbox button {
+    background-color: rgba(243, 252, 241, 0.1);
+    border: 1px solid white;
+    color: white;
+    display: flex;
+    padding: 3px;
+    cursor: pointer;
+}
+
+
+.textbox button:hover {
+background-color: lightgray;
+color: black;
+}
+.howmany img {
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+.cal img {
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+
+.howmany p {
+    color: #FFFFFF;
+    float: left;
+    margin-right: 0.3em;
+}
+
+.howmany button {
+    float: right;
+}
+
+.category {
+    padding: 0px 0 20px 20px;
+    margin-left: 26px;
+}
+
+.category a {
+    float: left;
+    margin-right: 30px;
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    text-align: center;
+    letter-spacing: 0.1em;
+
+    color: #FFFFFF;
+}
+
+hr {
+    opacity: 0.8;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    margin: 0 26px;
+}
+
+.letter {
+    width: 807px;
+    height: 284px;
+
+    border: 1px solid #CCF9C5;
+    border-radius: 10px;
+    text-align: center;
+    padding: 62px;
+    margin: 62px 62px;
+}
+
+.letter img {
+    width: 109px;
+    height: 88px;
+}
+
+.letter h4 {
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 33px;
+
+    text-align: center;
+    letter-spacing: 0.1em;
+
+    color: #FFFFFF;
+}
+
+.letter p {
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 350;
+    font-size: 20px;
+    line-height: 33px;
+
+    text-align: center;
+    letter-spacing: 0.1em;
+
+    color: #FFFFFF;
+}
+.explain {
+    margin-top: 40px;
+    margin-bottom: 45px;
+    padding-left: 26px ;
+}
+
+.explain h3 {
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 22px;
+
+    letter-spacing: 0.1em;
+
+    color: #FFFFFF;
+    float: left;
+    margin-left: 17px;
+}
+
+.explain p {
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 350;
+    font-size: 17px;
+    line-height: 22px;
+
+    letter-spacing: 0.1em;
+
+    color: #FFFFFF;
+    float: left;
+    margin-left: 28px;
+}
+
+/* 계산 부분 */
+
+.row {
+    padding: 30px 50px 30px 50px;
+}
+
+.cal {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 8px;
+    width: 451px;
+}
+
+.cal.l {
+    float: left;
+    width: 45%;
+}
+
+.cal.r {
+    float: right;
+    width: 45%;
+}
+
+.cal h4 {
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 22px;
+
+    letter-spacing: 0.1em;
+
+    color: #FFFFFF;
+    float: left;
+}
+
+.cal button {
+    margin-left: 213px;
+    float: right;
+    width: 88px;
+    height: 30px;
+    background-color: #CCF9C5;
+    border: 0.5px solid white;
+    border-radius: 5px;
+}

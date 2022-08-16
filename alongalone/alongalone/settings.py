@@ -127,10 +127,6 @@ USE_TZ = True
 #STAICFILES_DIR은 static파일들의 경로이다.
 STATICFILES_DIRS =[
     BASE_DIR / "static",
-    #아랫줄로 인해, 프로젝트최상위/static말고도 특정앱/static에도 가져올수있게됨.
-    os.path.join(BASE_DIR, "alongapp", "static"),
-    os.path.join(BASE_DIR, "accountapp", "static"),
-    os.path.join(BASE_DIR, "communityapp", "static"),
 ]
 
 #STATIC_URL은 static파일들을 제공할 URL이다.

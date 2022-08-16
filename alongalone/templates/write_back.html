@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/screen/write/write_back.css">
+    <title>혼밥게시판</title>
+</head>
+
+
+<body>
+
+
+    <!-- header -->
+    <header>
+
+        <a class="header-col" href="index.html">
+            <div class="header-col1">
+                <img class="header-logo" src="img/logowhite.PNG">
+                <div class="header-title">
+                    <span>alone</span>
+                    <span>along</span>
+                </div>
+
+            </div>
+        </a>
+
+        <div class="header-col2">
+            <a href="index.html">혼밥</a>
+            <a href="honsul.html">혼술</a>
+            <a href="honcafe.html">혼카페</a>
+            <a href="honmap.html">혼맵</a>
+        </div>
+
+        <span class="header-col-bar">
+
+            <img src="img/saessak.png" alt="">
+            <img src="img/alarm.png" alt="">
+            <a href="#">
+                <div id="mypage"><i class="fa-solid fa-user fa-lg"></i></div>
+            </a>
+        </span>
+
+
+    </header>
+
+    <!-- 글쓰기 화면 -->
+
+    <div class="container_wrap">
+        <div class="container">
+            <h2 class="container_title">bulletin board</h2>
+            <hr class="line">
+
+            <div class="container_box">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <!-- 보안관련임. 무시해도 됌 -->
+
+                    <!-- <form action="write.jsp" method="post"> -->
+                    <div class="form_wrap">
+
+
+                        <!-- 제목,카테고리,첨부파일, 위치 -->
+                        <div class="titlecategoryfilelocation">
+                            <div class="title">
+                                <label>Title</label>
+                                <input type=" text" class="titleinput" placeholder="제목을 입력해주세요." name="title"
+                                    maxlength="80" required="required" pattern=".{4,100}">
+                            </div>
+
+                            <div class="category">
+                                <!-- form 태그는 제출을 해야 값이 저장되서, 선택만 해도 되는 select 사용
+                                                                                                                        option value 숫자는 데이터베이스에 저장할 때, 혼밥을 선택하면 1을 저장한다는 뜻-->
+                                <label>Category</label><br>
+                                <select name="category" id="catetgory" class="category_select">
+                                    <option value="1">혼밥</option>
+                                    <option value="2">혼술</option>
+                                    <option value="3">혼카페</option>
+                                    <option value="4">혼놀</option>
+                                </select>
+                            </div>
+
+
+
+                            <br>
+
+
+
+                            <div class="file">
+                                <label>attached file</label>
+                                <input type="file" name="photo" class="photo">
+                            </div>
+
+
+                            <div class="space">
+                                <label>Location</label>
+                                <input type="text" class="form-control title1" id="title" placeholder="클릭해주세요."
+                                    name="title" maxlength="20">
+                            </div>
+                        </div>
+
+                        <!-- 내용작성란 -->
+                        <div class="content">
+                            <label>Contents</label>
+                            <div class="content_box_wrap">
+                                <textarea rows="3" id="body" name="body" placeholder="내용 작성"></textarea>
+                            </div>
+                        </div>
+                        <!-- 작성하기 버튼 -->
+                        <div class="btn_bg">
+                            <button type="submit" class="register">작성하기</button>
+                        </div>
+                        <!-- 데이터 형식 정의할 떄 본문 body로 해서 content -> body로 바꿈 -->
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    </div>
+
+
+
+
+
+    <!-- css -->
+    <style>
+        body {
+            background-color: black
+        }
+    </style>
+
+
+
+    <!--  icon 적용 -->
+    <script src="https://kit.fontawesome.com/73b35ca8d6.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
