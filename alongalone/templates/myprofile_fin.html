@@ -1,4 +1,4 @@
-<!--이 파일에선 base.html에 없는 줄이 15줄임!!!!!!!!!!!!!!!!!!!!!!-->
+<!--이 파일에선 base.html에 없는 줄이 15,16줄임!!!!!!!!!!!!!!!!!!!!!!-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +13,7 @@
     
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/screen/myprofile/myprofile.css">
+    <script src="/static/js/myprofile.js"></script>
 </head>
 
 <body>
@@ -82,42 +83,43 @@
         <br><br>
         <br>
 
+        <!-- B : 사진 넣기 -->
         <!-- 카테고리 -->
         <div class="category">
             <div class="category right">
                 <!-- 게시물 내 카테고리 (혼밥, 혼술, 혼카페) -->
                 <div class="category details">
-                    <a href="#" class="info2" style="border-bottom: 2px solid white;">혼밥</a>
-                    <a href="#" class="info2">혼술</a>
-                    <a href="#" class="info2">혼카페</a>
-                    <a href="#" class="info2">전체보기</a>
+                    <input type='button' value='혼밥' onclick='setInnerHTML()' style="color: white;border: none;" />
+                    <input type='button' value='혼술' onclick='setInnerHTML2()' style="color: white;border: none;"/>
+                    <input type='button' value='혼카페' onclick='setInnerHTML3()' style="color: white;border: none;"/>
+                    <input type='button' value='전체보기' onclick='setInnerHTML4()' style="color: white;border: none;"/>
                 </div>
             </div>
         </div>
 
-        <br>
-        <hr style="width: 1050px; text-align: center; margin-top: 0;">
-
-        <!--  게시물  -->
-        <div class="posts">
-            <div class="post_row">
-                <!-- B : 게시물 사진 들어갈 곳
-                    카테고리별로 다른 사진 보여주기
-                 -->
-                <div class="post green">1</div>
-                <div class="post green">2</div>
-                <div class="post green">3</div>
-            </div>
+        <div id="category" >
             <br>
-            <div class="post_row">
-                <div class="post green">4</div>
-                <div class="post green">5</div>
-                <div class="post green">6</div>
+            <hr style="width: 1050px; text-align: center; margin-top: 0;">
+            
+            <!-- 게시물 -->
+            <div class="posts">
+                <div class="post_row">
+            
+                    <div class="post green">1</div>
+                    <div class="post green">2</div>
+                    <div class="post green">3</div>
+                </div>
+                <br>
+                <div class="post_row">
+                    <div class="post green">4</div>
+                    <div class="post green">5</div>
+                    <div class="post green">6</div>
+                </div>
             </div>
         </div>
-
-
     </div>
+
+    <script src="/static/js/myprofile.js"></script>
 
 </body>
 
