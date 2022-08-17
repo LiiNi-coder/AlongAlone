@@ -27,7 +27,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# 외부 어플(pip install ~)은 ""로 표현했다.
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'commentapp',
     'accountapp',
     'communityapp',
+    "imagekit",
 ]
 
 MIDDLEWARE = [
@@ -88,6 +89,8 @@ DATABASES = {
     }
 }
 
+#기본 유저 모델을 우리가 커스텀한 모델로 지정
+AUTH_USER_MODEL = "accountapp.User"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -127,10 +130,6 @@ USE_TZ = True
 #STAICFILES_DIR은 static파일들의 경로이다.
 STATICFILES_DIRS =[
     BASE_DIR / "static",
-    #아랫줄로 인해, 프로젝트최상위/static말고도 특정앱/static에도 가져올수있게됨.
-    os.path.join(BASE_DIR, "alongapp", "static"),
-    os.path.join(BASE_DIR, "accountapp", "static"),
-    os.path.join(BASE_DIR, "communityapp", "static"),
 ]
 
 #STATIC_URL은 static파일들을 제공할 URL이다.

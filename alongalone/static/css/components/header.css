@@ -1,0 +1,107 @@
+
+header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  
+   
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 2;
+}
+
+.header-col{
+    width: 33%;
+}
+
+.header-col1 {
+    display: flex;
+    align-items:center;
+    width: 33%;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.4);
+    margin-right: 50px;
+}
+
+.header-title {
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    
+}
+
+.header-col1 span {
+    margin: 0px 5px;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    
+}
+.header-logo{
+    width: 70px;
+    height: 60px;
+}
+
+
+.header-col2 {
+    position: relative;
+    width: 33%;
+    justify-content: center;
+}
+.header-col2 a {
+    position: relative;
+    right: -100px;
+    margin: 20px;
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+}
+/* 버튼색 변화 */
+.header-col2 a:first-child:hover {
+    color: var(--mint);
+}
+.header-col2 a:nth-child(2):hover {
+    color: var(--pink);
+}
+
+.header-col2 a:nth-child(3):hover {
+    color: var(--blue);
+}
+
+.header-col2 a:last-child:hover {
+    color: var(--yellow);
+}
+
+.header-col-bar {
+    width: 33%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color:  rgba(0, 0, 0, 0.4);
+    margin-right: 30px;
+}
+
+
+.header-col-bar img {
+    width: 45px;
+    height: 50px;
+    margin: 5px;
+}
+
+#mypage {
+    /* 이미지 바꿔야함  현재 사진 안 뜸*/
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 10px;
+    cursor: pointer;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
