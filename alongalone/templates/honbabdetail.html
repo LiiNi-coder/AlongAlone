@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" href="/static/css/screen/detail/newdetailpost.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/screen/detail/newdetailpost.css">
 {% endblock %}
 
 {% block body %}
@@ -145,8 +145,8 @@
                 <button onclick="buttonclick_add(5000);">+5천원</button>
                 <button onclick="buttonclick_add(10000);">+1만원</button>
                 <script>
-                    function buttonclick_displaymoney(){
-                        document.getElemenetById("money").innerText = 500+Number(document.getElementById("moneyTextBox").value));}
+                    function buttonclick_displaymoney(){}
+                        // document.getElemenetById("money").innerText = 500+Number(document.getElementById("moneyTextBox").value));}
                 </script>
                 <button onclick="buttonclick_displaymoney();">후원하기</button>
                 </form>

@@ -3,22 +3,6 @@
 @import url("./components/variables.css");
 @import url("./components/header.css");
 
-/* screen */
-/* main */
-@import url("./screen/main/honbab.css");
-@import url("./screen/main/honcafe.css");
-@import url("./screen/main/honsul.css");
-@import url("./screen/main/honnol.css");
-
-/* mypage */
-
-/* detail */
-@import url("./newdetailpost.css");
-/* detailpost css 경로 설정 똑바로 해두기 */
-
-
-
-
 *,
 body {
     font-family: 'Edu SA Beginner', cursive;
