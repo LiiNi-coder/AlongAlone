@@ -16,7 +16,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/static/img/favicon.png">
 
     <!-- 주의! 이 아래에 각 html마다 별도의 css가 추가될때가 있음. 맨 앞에 주석에 달아놓을거임 -->
-    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- <link rel="stylesheet" href="/static/css/style.css"> -->
     {% block css %}
     {% endblock css %}
 </head>
@@ -27,7 +27,7 @@
 
         <a class="header-col" href="index.html">
             <div class="header-col1">
-                <img class="header-logo" src="img/logowhite.PNG">
+                <img class="header-logo" src="/static/img/logowhite.png">
                 <div class="header-title">
                     <span>alone</span>
                     <span>along</span>
@@ -37,7 +37,7 @@
         </a>
 
         <div class="header-col2">
-            <a href="index.html">혼밥</a>
+            <a href="base.html">혼밥</a>
             <a href="honsul.html">혼술</a>
             <a href="/html/home/honcafe.html">혼카페</a>
             <a href="honmap.html">혼맵</a>
@@ -45,7 +45,7 @@
 
         <span class="header-col-bar">
 
-            <img src="img/saessak.png" alt="">
+            <img src="/static/img/logo.png" alt="">
             <img src="img/alarm.png" alt="">
             <a href="#">
                 <div id="mypage"><i class="fa-solid fa-user fa-lg"></i></div>
@@ -62,203 +62,6 @@
 
 
 
-    <style>
-        /* honbab title */
-        body {
-            background-color: black;
-        }
-
-        .main_title {
-            width: 60%;
-            height: 60px;
-
-            margin-top: 90px;
-            padding: 30px 100px;
-        }
-
-        .main_title h1 {
-            font-size: 50px;
-            font-weight: 700;
-            color: var(--mint);
-            margin-bottom: 10px;
-        }
-
-        .span_wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            position: relative;
-        }
-
-        .span_wrap_col1 {
-            margin-top: 10px;
-        }
-
-        .span_wrap_col1 span {
-            margin: 0px 3px;
-            color: white;
-
-        }
-
-        .span_wrap_col1 span:first-child {
-            color: var(--mint);
-        }
-
-
-        .span_wrap_col1 span:hover,
-        .span_wrap_col2:hover {
-            color: rgb(111, 110, 110);
-        }
-
-        .span_wrap_col2 {
-            position: absolute;
-            right: 52px;
-            color: white;
-        }
-
-        /* box */
-        #box {
-            display: flex;
-        }
-
-        /* honbab box */
-
-        .honbab_box {
-            width: 60%;
-            height: 300px;
-            background-color: var(--mint);
-            border-radius: 30px;
-            margin: 30px 100px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .box_title {
-            display: flex;
-            padding: 30px;
-        }
-
-
-        .box_img {
-            height: 100px;
-            width: 100px;
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 50px;
-            margin-right: 20px;
-        }
-
-        .box_text_wrap {
-
-            margin-top: 10px;
-            height: 50px;
-            padding: 10px;
-        }
-
-        .box_name {
-            font-size: 30px;
-        }
-
-        .box_content_name {
-            margin-top: 5px;
-        }
-
-        .box_preview {
-            padding: 0px 50px;
-        }
-
-        .box_info {
-
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        .box_info_map_wrap {
-            padding-left: 50px;
-        }
-
-
-
-        .box_info_icon_wrap {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-right: 40px;
-            position: relative;
-        }
-
-        .box_info_icon_wrap i {
-            width: 20px;
-            margin: 10px;
-        }
-
-        .box_info_icon_wrap .fa-heart:hover {
-            color: red;
-        }
-
-        .box_info_icon_wrap .fa-comment:hover {
-            color: rgba(0, 0, 0, 0.4);
-        }
-
-
-        /* popular box  */
-        .popular_box {
-            width: 25%;
-            height: 280px;
-            background-color: var(--mint);
-            margin-right: 100px;
-            margin-top: 30px;
-            border-radius: 20px;
-            position: relative;
-        }
-
-        .popular_box h2 {
-            position: absolute;
-            top: -25px;
-            font-size: 18px;
-            font-weight: 800;
-        }
-
-        .popular_info_wrap {
-            height: 60%;
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .popular_info_wrap .popular_img {
-            width: 120px;
-            height: 120px;
-            background-color: white;
-            border-radius: 50%;
-            border: 1px solid black;
-            margin-bottom: 10px;
-        }
-
-        .popular_name {
-            font-weight: 600;
-        }
-
-        .popular_follow_wrap {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            margin-top: 20px;
-
-        }
-
-        .popular_follow_col {
-            text-align: center;
-        }
-
-        .popular_follow_col div {
-            margin-top: 5px;
-        }
-    </style>
 
 
 
