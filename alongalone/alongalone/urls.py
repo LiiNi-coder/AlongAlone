@@ -38,6 +38,7 @@ urlpatterns = [
     path("sponsor/", views.sponsor, name="sponsor"),
     path("charge/<int:money>", views.charge, name="charge"),
     path("donate/<int:blog_id>", views.donate, name="donate"),
+
     #accountapp 관련 URL
     path("login/", accountapp_views.login_login, name="login"),
     path("logout/", accountapp_views.logout, name="logout"),
@@ -82,5 +83,7 @@ urlpatterns = [
     path("saessakcount/", views.saessakcount, name="saessakcount"),
     path("sponsor_status/", views.sponsor_status, name="sponsor_status"),
     #path("sponsor/", views.sponsor, name="sponsor"),
-    path("write_back/", views.write_back, name="write_back"),
+    path("write_back/", views.write_back, name="writes_back"),
+    path("honmap/", views.honmap, name="honmap"),
+    path("honmap2/", views.honmap2, name="honmap2"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

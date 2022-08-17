@@ -57,6 +57,12 @@ def myprofile_fin(request):
 def saessakcount(request):
     return render(request, "saessakcount_백엔드 기다리는 중.html")
 
+def honmap(request):
+    return render(request, "honmap.html")
+
+def honmap2(request):
+    return render(request, "honmap2.html")
+
 """
 def sponsor_status(request):
     return render(request, "sponsor_status.html")

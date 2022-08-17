@@ -2,107 +2,6 @@
 예) 클릭하면 밑줄 생기는 것 등등 */
 @import url("/css/components/reset.css");
 
-
-* {
-    box-sizing: border-box;
-    background-color: black;
-}
-
-
-body {
-    font-size: 14px;
-}
-/* header */
-
-header {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    padding: 30px 100px;
-    display: flex;
-    justify-content: space-between;
-    background-color: rgba(0, 0, 0, 1);
-    z-index: 2;
-    position: fixed;
-    top: 0;
- 
-}
-
-.header-col {
-    display: flex;
-    align-items:center;
-    color: rgba(0, 0, 0, 0.4);
-    margin-right: 50px;
-}
-
-.header-title {
-    height: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
-    
-}
-
-.header-col span {
-    margin: 0px 5px;
-    font-size: 20px;
-    font-weight: 600;
-    color: white;
-    
-}
-
-.header-col a {
-    margin: 0px 20px;
-    font-size: 20px;
-    color: white;
-    font-weight: 600;
-}
-.header-col a:hover {
-    color: rgb(133, 130, 130);
-}
-.header-logo{
-    width: 70px;
-    height: 60px;
-}
-
-.header-col-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 150px;
-    color:  rgba(0, 0, 0, 0.4)
-}
-.header-col-bar i {
-    margin-left: 5px;
-    color : white;
-}
-.header-bar {
-  border: 1px solid rgba(0, 0, 0, 0.4);
-  height: 15px;
-  margin-right: 5px;
-}
-.header-bar-search{
-    width: 30;
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-}
-
-
-.header-col-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.header-col-bar img {
-    width: 40px;
-    height: 50px;
-}
-
 #mypage {
     background-color: white;
     width: 30px;
@@ -117,28 +16,10 @@ header {
     height:100%;
     margin-left: 150px;
     margin-top: 100px;
-    /* display: flex; */
 }
-
-/* .content_left {
-    width: 888px;
-    float:left;
-    box-sizing: border-box;
-} 
-
-.content_right {
-    width: 315px;
-    padding-top: 221px;
-    padding-left: 63px;
-    float:right;
-    box-sizing: border-box;
-    background-color: transparent;
-} */
 
 .profile {
     margin-top: 20px;
-    /* width: 100%; */
-    /* justify-content: flex-start; */
     height: 110px;
     box-sizing: border-box;
     
@@ -160,12 +41,10 @@ header {
 
 .profile_right {
     width: 85%;
-    /* margin-left: 46px; */
     margin-top: 0;
     float: right;
     box-sizing: border-box;
     overflow: hidden;
-    /* justify-content: left; */
 }
 
 .profile_right_left {
@@ -280,6 +159,7 @@ header {
             inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 
+
 .details_ {
     font-family: 'Noto Sans HK';
     font-style: normal;
@@ -309,12 +189,22 @@ header {
     opacity: 0.8;
     display: block;
     float: right;
-    /* position: relative; */
 }
 
 .info {
+    width: 551px;
+    height: 66px;
+
+    font-family: 'Noto Sans HK';
+    font-style: normal;
+    font-weight: 350;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.1em;
+
+    color: rgba(255, 255, 255, 0.95);
+
     margin-right: 22px;
-    /* position: absolute; */
 }
 
 hr {
@@ -327,10 +217,6 @@ hr {
 
 /* 게시물 */
 
-/* .posts {
-    display: flex;
-    justify-content: center;
-} */
 
 .post {
     width: 270px;
@@ -338,23 +224,25 @@ hr {
     border-radius: 10px;
     margin: 16px 17px 16px 17px;
     flex:1;
-    
+
+    background-color: black;
+   
 }
 
 .post.green {
-    background: #CCF9C5;
+    background: transparent;
 }
 
 .post.pink {
-    background: #F5C1CA;
+    background: transparent;
 }
 
 .post.blue {
-    background: #8ADAFC;
+    background: transparent;
 }
 
 .post.yellow {
-    background: #FFE482;
+    background: transparent; 
 }
 
 .post_row {
@@ -373,12 +261,12 @@ hr {
     font-weight: 500;
     font-size: 25px;
     line-height: 22px;
-    /* identical to box height, or 88% */
 
     letter-spacing: 0.1em;
 
     color: #FFFFFF;
 }
+
 
 .category_title {
     border:0;
@@ -448,7 +336,6 @@ hr {
 .category {
     height: 100%;
     margin-bottom: 9px;
-
 }
 
 .category.left {
@@ -476,34 +363,18 @@ hr {
 
     position: relative;
     display: inline-block;
-    /* box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); */
     text-decoration: none;
     transition: 0.25s;
     margin-bottom: 0;
 }
 
-.w-btn.select {
-    background: #F5F5F5;
-    border: 1px solid #F5F5F5;
-    opacity: 0.8;
-    border-radius: 5px;
-
-}
-
-.w-btn.not {
-    opacity: 0.8;
-    border: 1px solid #F5F5F5;
-    border-radius: 5px;
-
-}
-
 .category.details {
+    
     font-family: 'Noto Sans HK';
     font-style: normal;
     font-weight: 350;
     font-size: 16px;
     line-height: 22px;
-    /* or 138% */
 
     letter-spacing: 0.1em;
     color: rgba(255, 255, 255, 0.95);
@@ -513,6 +384,7 @@ hr {
     float: left;
     margin-right: 230px;
 }
+
 
 .info2_ {
     margin-right: 600px;

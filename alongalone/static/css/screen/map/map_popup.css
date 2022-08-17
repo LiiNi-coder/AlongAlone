@@ -35,11 +35,12 @@
 
     font-family: 'Noto Sans HK';
     font-style: normal;
-    font-weight: 400;
+    font-weight: 350;
     font-size: 25px;
     line-height: 22px;
+    /* or 88% */
 
-    letter-spacing: 0.1em;
+    letter-spacing: 0.5em;
 
     color: #FFFFFF;
 }
@@ -228,7 +229,7 @@ hr.timeline {
 .timeline ul {
     list-style-type: none;
     border-left: 2px solid rgba(153, 153, 153, 1);
-    padding: 10px 5px;
+    padding: 5px 5px 10px 5px;
     height: 570px;
 }
 
@@ -239,7 +240,6 @@ hr.timeline {
     border-radius: 5px;
     cursor: pointer;
     transition: .5s;
-
 }
 
 .timeline ul li span {
